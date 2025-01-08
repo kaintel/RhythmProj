@@ -4,16 +4,26 @@
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.1.0/dist/aframe-extras.min.js"></script>
     <script src="note.js"></script>
     <script src="action.js"></script>
+    <script src="monster.js"></script>
   </head>
 
     <body >
       <a-scene >
         <a-assets>
-         
-            <!-- assets -->
+          <a-assets-item id="winter" src="low_poly_winter_scene/scene.gltf"></a-assets-item>
+          <a-assets-item id="forest" src="low_poly_environments_01/scene.gltf"></a-assets-item>
+          <a-assets-item id="mino" src="minotaur_low-poly/scene.gltf"></a-assets-item>
+          
+          
+          <!-- assets -->
 
         </a-assets>
         <a-plane color="grey" position="0 0 -5" rotation="-90 0 0" width="50" height="50"></a-plane>
+      
+      
+        <a-gltf-model src="#winter" position="0 0.5 0"></a-gltf-model>
+        <a-gltf-model src="#forest" position="0 0 0"></a-gltf-model>
+        
         <a-sky color="cyan"></a-sky>
         <a-camera position="0 1.3 0">
           <a-cursor raycaster="objects: [interact]">
