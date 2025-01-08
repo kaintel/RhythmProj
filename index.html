@@ -10,14 +10,18 @@
     <body >
       <a-scene >
         <a-assets>
+                 
           <a-assets-item id="winter" src="low_poly_winter_scene/scene.gltf"></a-assets-item>
           <a-assets-item id="forest" src="low_poly_environments_01/scene.gltf"></a-assets-item>
           <a-assets-item id="mino" src="minotaur_low-poly/scene.gltf"></a-assets-item>
-          
-          
           <!-- assets -->
 
         </a-assets>
+
+        <a-gltf-model  src="#winter" position="0 0.5 0" ></a-gltf-model>
+        <a-gltf-model  src="#forest" position="0 0 0" ></a-gltf-model>
+
+
         <a-plane color="grey" position="0 0 -5" rotation="-90 0 0" width="50" height="50"></a-plane>
       
       
