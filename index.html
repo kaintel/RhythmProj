@@ -11,7 +11,7 @@
       <a-scene >
         <a-assets>
                  
-          <a-assets-item id="winter" src="low_poly_winter_scene/scene.gltf"></a-assets-item>
+          <!-- <a-assets-item id="winter" src="low_poly_winter_scene/scene.gltf"></a-assets-item> -->
           <a-assets-item id="forest" src="low_poly_environments_01/scene.gltf"></a-assets-item>
           <a-assets-item id="mino" src="minotaur_low-poly/scene.gltf"></a-assets-item>
           <!-- assets -->
@@ -29,8 +29,8 @@
         <a-gltf-model src="#forest" position="0 0 0"></a-gltf-model>
         
         <a-sky color="cyan"></a-sky>
-        <a-camera  active id="mainCamera" position="0 1.6 0">
-          <a-cursor raycaster="objects: [interact]">
+        <a-camera  active id="mainCamera" position="10 1.5 0">
+          <a-cursor id="mainCursor" raycaster="objects: [interact]">
      
 			
 	
@@ -38,7 +38,9 @@
         
           </a-cursor>
         </a-camera>
-        
+        <a-camera active="false" id="cylinderCamera" position="-25 6 0" wasd-controls-enabled="false">
+          <a-cursor raycaster="objects: [interact]" id="cylinderCursor"></a-cursor>
+        </a-camera>
       </a-scene>
 
     </body>

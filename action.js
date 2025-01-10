@@ -3,14 +3,15 @@ let scene, camera, notes = [], minotaurs = [];
 
 window.onload = function(){
     scene = document.querySelector("a-scene");
-    camera = document.querySelector("a-camera");
+    mainCamera = document.getElementById("mainCamera");
+    cylinderCamera = document.getElementById("cylinderCamera");
     cursor = document.querySelector("a-cursor");
-
+    cylinderCursor = document.querySelector("cylinderCursor");
  
     for(let y= 2; y < 10; y+= 0.1){
         let x = rnd(-0.5,0.5);
      notes.push(new Note(x,y,0));
-
+             
       }
 
 
@@ -24,26 +25,28 @@ window.onload = function(){
       loop();
       function loop(){
 
-
+    
 
       for (let minotaur of minotaurs) {
-        // minotaur.attack();
-        let d1 = distance(camera, minotaur.obj);
+    
+        let d1 = distance(mainCamera, minotaur.obj);
 
-        if(d1<2){
+        if(d1<1.6){
           minotaur.attack()
+          cylinderCamera.setAttribute("active",true);
+          mainCamera.setAttribute("active",false);
           for (let note of notes) {
             note.move();
-
+  
         }
-
+    
         }
       }
-
-
-
+      
+     
+      
       window.requestAnimationFrame( loop );
-
+      
     }
  
 
