@@ -1,7 +1,7 @@
 class Note{
     constructor(x,y,z){
         this.y = y;
-        this.dy = 0.1;
+        this.dy = 0.01;
         this.x = x;
         this.z = z;
         this.flag=false;

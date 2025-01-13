@@ -8,11 +8,31 @@ window.onload = function(){
     cursor = document.querySelector("a-cursor");
     cylinderCursor = document.querySelector("cylinderCursor");
  
-    for(let y= 2; y < 10; y+= 0.1){
-        let x = rnd(-0.5,0.5);
+    for(let y= 2; y < 50; y+=rnd(0.2,1)){
+        let x = -0.1;
      notes.push(new Note(x,y,0));
              
       }
+
+      for(let y= 2; y <50; y+=rnd(0.2,1)){
+        let x = 0.1;
+     notes.push(new Note(x,y,0));
+             
+      }
+
+      
+    for(let y= 2; y < 50; y+=rnd(0.2,1)){
+      let x = -0.3;
+   notes.push(new Note(x,y,0));
+           
+    }
+
+    for(let y= 2; y <50; y+=rnd(0.2,1)){
+      let x = 0.3;
+   notes.push(new Note(x,y,0));
+           
+    }
+
 
 
       for(let a = 1; a < 3;  a+=1){
@@ -35,16 +55,17 @@ window.onload = function(){
           minotaur.attack()
           cylinderCamera.setAttribute("active",true);
           mainCamera.setAttribute("active",false);
+     
+        setTimeout(() => {
           for (let note of notes) {
             note.move();
   
         }
+        }, 3000);
     
         }
       }
-      
-     
-      
+            
       window.requestAnimationFrame( loop );
       
     }
