@@ -5,7 +5,7 @@ class Monster2{
         this.obj = document.createElement("a-gltf-model");
         this.obj.setAttribute("src","#monster2");
         this.obj.setAttribute("position",{x:x,y:y,z:z});
-        this.obj.setAttribute("scale", "0.005 0.005 0.005");
+        this.obj.setAttribute("scale", "0.0051 0.005 0.005");
         scene.append(this.obj);    
 
 
