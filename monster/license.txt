@@ -1,0 +1,11 @@
+Model Information:
+* title:	monster
+* source:	https://sketchfab.com/3d-models/monster-9e97787cc9b242bc84837fd4358bbdee
+* author:	victory_mirosya (https://sketchfab.com/victory_mirosya)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "monster" (https://sketchfab.com/3d-models/monster-9e97787cc9b242bc84837fd4358bbdee) by victory_mirosya (https://sketchfab.com/victory_mirosya) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

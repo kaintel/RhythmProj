@@ -1,5 +1,5 @@
 let rnd = (l,u) => Math.random() * (u-l) + l
-let scene, camera, notes = [], minotaurs = [];
+let scene, camera, notes = [], minotaurs = [], monster2s = [];
 
 window.onload = function(){
     scene = document.querySelector("a-scene");
@@ -40,6 +40,14 @@ window.onload = function(){
         let z = 10;
        minotaurs.push(new Minotaur(x,0,z));
       }
+
+
+      for(let a = 1; a < 2;  a+=1){
+        let x = rnd(-3,3);
+        let z = 15;
+       monster2s.push(new Monster2(x,0,z));
+      }
+
     }
 
       loop();
@@ -50,9 +58,29 @@ window.onload = function(){
       for (let minotaur of minotaurs) {
     
         let d1 = distance(mainCamera, minotaur.obj);
-
+        
         if(d1<1.6){
           minotaur.attack()
+          cylinderCamera.setAttribute("active",true);
+          mainCamera.setAttribute("active",false);
+     
+        setTimeout(() => {
+          for (let note of notes) {
+            note.move();
+  
+        }
+        }, 1000);//time before notes start falling//
+    
+        }
+      }
+
+
+      for (let monster2 of monster2s) {
+    
+        let d2 = distance(mainCamera, monster2.obj);
+        
+        if(d2<1.6){
+          monster2.attack()
           cylinderCamera.setAttribute("active",true);
           mainCamera.setAttribute("active",false);
      

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Lunagaron [Monster Hunter]
+* source:	https://sketchfab.com/3d-models/lunagaron-monster-hunter-1d01e3b97bdf4d62bbcf1087aaceccfd
+* author:	User 37564 (https://sketchfab.com/rhl89ryo)
+
+Model License:
+* license type:	CC-BY-SA-4.0 (http://creativecommons.org/licenses/by-sa/4.0/)
+* requirements:	Author must be credited. Modified versions must have the same license. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Lunagaron [Monster Hunter]" (https://sketchfab.com/3d-models/lunagaron-monster-hunter-1d01e3b97bdf4d62bbcf1087aaceccfd) by User 37564 (https://sketchfab.com/rhl89ryo) licensed under CC-BY-SA-4.0 (http://creativecommons.org/licenses/by-sa/4.0/)
