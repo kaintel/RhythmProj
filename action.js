@@ -61,7 +61,7 @@ window.onload = function(){
             note.move();
   
         }
-        }, 3000);
+        }, 1000);//time before notes start falling//
     
         }
       }
