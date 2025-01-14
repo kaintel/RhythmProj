@@ -49,7 +49,9 @@
           </a-cursor>
         </a-camera>
         <a-camera active="false" id="cylinderCamera" position="-25 6 0" wasd-controls-enabled="false">
-          <a-cursor raycaster="objects: [interact]" id="cylinderCursor"></a-cursor>
+          <a-cursor raycaster="objects: [interact]" id="cylinderCursor">
+            <a-text id="output" value="score" scale="0.2 0.2 0.2" position="-1 0.4 0"></a-text>
+          </a-cursor>
         </a-camera>
       </a-scene>
 
