@@ -1,5 +1,6 @@
 let rnd = (l,u) => Math.random() * (u-l) + l
-let scene, camera, notes = [], minotaurs = [], monster2s = [];
+let scene, camera, notes = [], minotaurs = [],
+monster2s = [], scorenotes = [];
 
 window.onload = function(){
     scene = document.querySelector("a-scene");
@@ -33,6 +34,11 @@ window.onload = function(){
            
     }
 
+    for(let x= -0.3; x <0.4; x+=0.2){
+      let y = -0.5;
+   scorenotes.push(new Scorenote(x,y,0));
+           
+    }
 
 
       for(let a = 1; a < 3;  a+=1){
@@ -93,6 +99,8 @@ window.onload = function(){
     
         }
       }
+
+
             
       window.requestAnimationFrame( loop );
       
