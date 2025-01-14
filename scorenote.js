@@ -13,11 +13,5 @@ class Scorenote{
       cursor.append(this.obj);
     }
 
-    score(){
-      this.flag=true;
-      if(this.flag == true){
-       score++;
 
-      }
-    }
     }

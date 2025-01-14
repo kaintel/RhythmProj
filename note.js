@@ -1,7 +1,7 @@
 class Note{
     constructor(x,y,z){
         this.y = y;
-        this.dy = 0.01;
+        this.dy = 0.005;
         this.x = x;
         this.z = z;
         this.flag=false;
@@ -18,6 +18,11 @@ class Note{
         this.y -= this.dy;
         this.obj.setAttribute("position",{x:this.x, y:this.y, z:this.z});
       }
+    }
+
+    scoring(){
+      this.obj.setAttribute("opacity","0");
+      score++;
     }
 
     }

@@ -1,6 +1,6 @@
 let rnd = (l,u) => Math.random() * (u-l) + l
 let scene, camera, notes = [], minotaurs = [],
-monster2s = [], scorenotes = [];
+monster2s = [], scorenotes = [], score = 0;
 
 window.onload = function(){
     scene = document.querySelector("a-scene");
@@ -9,26 +9,26 @@ window.onload = function(){
     cursor = document.querySelector("a-cursor");
     cylinderCursor = document.querySelector("cylinderCursor");
  
-    for(let y= 2; y < 50; y+=rnd(0.2,1)){
+    for(let y= 2; y < 10; y+=rnd(0.2,1)){
         let x = -0.1;
      notes.push(new Note(x,y,0));
              
       }
 
-      for(let y= 2; y <50; y+=rnd(0.2,1)){
+      for(let y= 2; y <10; y+=rnd(0.2,1)){
         let x = 0.1;
      notes.push(new Note(x,y,0));
              
       }
 
       
-    for(let y= 2; y < 50; y+=rnd(0.2,1)){
+    for(let y= 2; y < 10; y+=rnd(0.2,1)){
       let x = -0.3;
    notes.push(new Note(x,y,0));
            
     }
 
-    for(let y= 2; y <50; y+=rnd(0.2,1)){
+    for(let y= 2; y <10; y+=rnd(0.2,1)){
       let x = 0.3;
    notes.push(new Note(x,y,0));
            
@@ -54,6 +54,22 @@ window.onload = function(){
        monster2s.push(new Monster2(x,0,z));
       }
 
+      window.addEventListener("keydown",function(e){
+        
+        for (let scorenote of scorenotes) {
+          for (let note of notes) {
+     
+            let d3 = distance(scorenote.obj, note.obj);
+            if(d3 <0.15 && e.key == " "){
+              console.log(this.x);
+  note.scoring();
+  document.querySelectorAll('#output')[0].setAttribute('value', `score: ${score}`);
+          }
+    
+        }
+      }
+    })
+    
     }
 
       loop();
@@ -101,6 +117,7 @@ window.onload = function(){
       }
 
 
+     
             
       window.requestAnimationFrame( loop );
       
