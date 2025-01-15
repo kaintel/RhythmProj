@@ -7,32 +7,43 @@
     <script src="minotaur.js"></script>
     <script src="monster2.js"></script>
     <script src="scorenote.js"></script>
+    <script src="cloud.js"></script>
   </head>
 
     <body >
-      <a-scene >
+      <a-scene id="scene">
         <a-assets>
                  
           <!-- <a-assets-item id="winter" src="low_poly_winter_scene/scene.gltf"></a-assets-item> -->
       
           <a-assets-item id="sky" src="sky.jpg"></a-assets-item>
+          <a-assets-item id="grass" src="grass1.jpg"></a-assets-item>
           <a-assets-item id="forest" src="low_poly_environments_01/scene.gltf"></a-assets-item>
           <a-assets-item id="mino" src="minotaur_low-poly/scene.gltf"></a-assets-item>
           <a-assets-item id="monster2" src="monsters_01/scene.gltf"></a-assets-item>
           <a-assets-item id="forest2" src="forest/scene.gltf"></a-assets-item>
+          <a-assets-item id="cloud"src="cloud_test/scene.gltf"></a-assets-item>
           <!-- assets -->
 
         </a-assets>
 
         <a-gltf-model  src="#winter" position="0 0.5 0" ></a-gltf-model>
         <a-gltf-model  src="#forest" position="0 0 0" ></a-gltf-model>
-        <a-gltf-model src="#forest2" position="-1 0.3 20"></a-gltf-model>
-        <a-gltf-model src="#forest2" position="15 0.3 20"></a-gltf-model>
-        <a-gltf-model src="#forest2" position="-15 0.3 25"></a-gltf-model>
+        <a-gltf-model  src="#forest" position="-50 0 0" ></a-gltf-model>
+
+        <a-gltf-model src="#forest2" position="-1 0.2 20"></a-gltf-model>
+        <a-gltf-model src="#forest2" position="15 0.2 20"></a-gltf-model>
+        <a-gltf-model src="#forest2" position="-15 0.2 25"></a-gltf-model>
+        <a-gltf-model src="#forest2" position="-1 0.2 -20"></a-gltf-model>
+        <a-gltf-model src="#forest2" position="15 0.2 -20"></a-gltf-model>
+        <a-gltf-model src="#forest2" position="-15 0.2 -30"></a-gltf-model>
+        <a-gltf-model src="#forest2" position="30 0.2 0"></a-gltf-model>
+        <a-gltf-model src="#forest2" position="30 0.2 15"></a-gltf-model>
+        <a-gltf-model src="#forest2" position="30 0.2 -15"></a-gltf-model>
         <a-sky src="#sky"></a-sky>
 
         
-        <a-plane color="grey" position="0 0 -5" rotation="-90 0 0" width="50" height="50"></a-plane>
+        <a-plane material="src:#grass;repeat: 30 30" position="0 0 -5" rotation="-90 0 0" width="50" height="50"></a-plane>
       
         
         <a-camera active id="mainCamera" position="10 1.5 0">
