@@ -10,26 +10,26 @@ window.onload = function(){
     cylinderCursor = document.querySelector("cylinderCursor");
  
 
-    for(let y= 2; y < 10; y+=rnd(0.2,1)){
+    for(let y= 2; y < 10; y+=rnd(0.2,2)){
       let x = -0.3;
    note1s.push(new Note1(x,y,0));
            
     }
 
-    for(let y= 2; y < 10; y+=rnd(0.2,1)){
+    for(let y= 2; y < 10; y+=rnd(0.2,2)){
         let x = -0.1;
      note2s.push(new Note2(x,y,0));
              
       }
 
-      for(let y= 2; y <10; y+=rnd(0.2,1)){
+      for(let y= 2; y <10; y+=rnd(0.2,2)){
         let x = 0.1;
      note3s.push(new Note3(x,y,0));
              
       }
   
 
-    for(let y= 2; y <10; y+=rnd(0.2,1)){
+    for(let y= 2; y <10; y+=rnd(0.2,2)){
       let x = 0.3;
    note4s.push(new Note4(x,y,0));
            
