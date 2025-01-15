@@ -1,6 +1,6 @@
 let rnd = (l,u) => Math.random() * (u-l) + l
 let scene, camera, note1s = [], note2s = [], note3s = [], note4s = [],
-minotaurs = [],monster2s = [], scorenotes = [], score = 0,
+minotaurs = [],monster2s = [], scorenotes = [], missbars = [], score = 0, combo=0,
 clouds = [];
 
 window.onload = function(){
@@ -10,11 +10,9 @@ window.onload = function(){
     cursor = document.querySelector("a-cursor");
     cylinderCursor = document.querySelector("cylinderCursor");
  
-    for(let a= 2; a < 10; a+=rnd(0.2,2)){
-      let x = rnd(1,40);
-      let z = rnd(1,40);
-      let y = 30;
-   clouds.push(new Cloud(x,y,z));
+    for(let x= -0.3; x <0.4; x+=0.2){
+      let y = 0;
+   missbars.push(new Missbar(x,y,0));
            
     }
 
@@ -67,16 +65,23 @@ window.onload = function(){
         
         for (let scorenote of scorenotes) {
           for (let note1 of note1s) {
-     
-            let d3 = distance(scorenote.obj, note1.obj);
 
-            if(d3 <0.15 && e.key == "s"){            
+            let d = distance(scorenote.obj, note1.obj);
+       
+            if(d <0.15 && note1.y <-0.45 && e.key == "s"){            
   note1.scoring();
   document.querySelectorAll('#output')[0].setAttribute('value', `score: ${score}`);
-          }  
-        }
+  document.querySelectorAll('#output')[1].setAttribute('value', `combo: ${combo}`);
+          } 
+           if( d >0.15 &&note1.y >-0.45 && e.key == "s"){
+        note1.miss();
+        document.querySelectorAll('#output')[1].setAttribute('value', `combo: ${combo}`);
       }
+      }
+    }
     })
+
+
 
     window.addEventListener("keydown",function(e){
         
@@ -118,6 +123,7 @@ document.querySelectorAll('#output')[0].setAttribute('value', `score: ${score}`)
         if(d <0.15 && e.key == "k"){            
 note4.scoring();
 document.querySelectorAll('#output')[0].setAttribute('value', `score: ${score}`);
+
       }  
     }
   }

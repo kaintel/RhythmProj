@@ -4,7 +4,7 @@ class Note1{
         this.dy = 0.005;
         this.x = x;
         this.z = z;
-        this.flag=false;
+        this.flag = false;
       this.obj = document.createElement("a-circle");
       this.obj.setAttribute("radius",0.1);
       this.obj.setAttribute("position",{x:x, y:this.y, z:z});
@@ -23,9 +23,15 @@ class Note1{
     scoring(){
       this.obj.setAttribute("opacity","0");
       score++;
+      combo++;
     }
 
+    miss(){
+      combo=0;
+   
     }
+
+  }
 
     class Note2{
       constructor(x,y,z){

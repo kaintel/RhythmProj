@@ -8,6 +8,7 @@
     <script src="monster2.js"></script>
     <script src="scorenote.js"></script>
     <script src="cloud.js"></script>
+    <script src="missbar.js"></script>
   </head>
 
     <body >
@@ -57,7 +58,9 @@
         </a-camera>
         <a-camera active="false" id="cylinderCamera" position="-25 6 0" wasd-controls-enabled="false">
           <a-cursor raycaster="objects: [interact]" id="cylinderCursor">
-            <a-text id="output" value="score" scale="0.2 0.2 0.2" position="-1 0.4 0"></a-text>
+            <a-text id="output" value="score" scale="0.2 0.2 0.2" position="-1.7 0.7 0"></a-text>
+            <a-text id="output" value="combo" scale="0.2 0.2 0.2" position="-1.5 -0.6 0"></a-text>
+    
           </a-cursor>
         </a-camera>
       </a-scene>
