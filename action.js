@@ -62,7 +62,7 @@ window.onload = function(){
      
             let d3 = distance(scorenote.obj, note1.obj);
 
-            if(d3 <0.15 && e.key == "a"){            
+            if(d3 <0.15 && e.key == "s"){            
   note1.scoring();
   document.querySelectorAll('#output')[0].setAttribute('value', `score: ${score}`);
           }  
@@ -77,7 +77,7 @@ window.onload = function(){
    
           let d = distance(scorenote.obj, note2.obj);
           
-          if(d <0.15 && e.key == "s"){            
+          if(d <0.15 && e.key == "d"){            
 note2.scoring();
 document.querySelectorAll('#output')[0].setAttribute('value', `score: ${score}`);
         }  
@@ -92,7 +92,7 @@ document.querySelectorAll('#output')[0].setAttribute('value', `score: ${score}`)
    
           let d = distance(scorenote.obj, note3.obj);
 
-          if(d <0.15 && e.key == "k"){            
+          if(d <0.15 && e.key == "j"){            
 note3.scoring();
 document.querySelectorAll('#output')[0].setAttribute('value', `score: ${score}`);
         }  
@@ -107,7 +107,7 @@ document.querySelectorAll('#output')[0].setAttribute('value', `score: ${score}`)
  
         let d = distance(scorenote.obj, note4.obj);
 
-        if(d <0.15 && e.key == "l"){            
+        if(d <0.15 && e.key == "k"){            
 note4.scoring();
 document.querySelectorAll('#output')[0].setAttribute('value', `score: ${score}`);
       }  
