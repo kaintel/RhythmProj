@@ -1,6 +1,7 @@
 let rnd = (l,u) => Math.random() * (u-l) + l
 let scene, camera, note1s = [], note2s = [], note3s = [], note4s = [],
-minotaurs = [],monster2s = [], scorenotes = [], score = 0;
+minotaurs = [],monster2s = [], scorenotes = [], score = 0,
+clouds = [];
 
 window.onload = function(){
     scene = document.querySelector("a-scene");
@@ -9,6 +10,13 @@ window.onload = function(){
     cursor = document.querySelector("a-cursor");
     cylinderCursor = document.querySelector("cylinderCursor");
  
+    for(let a= 2; a < 10; a+=rnd(0.2,2)){
+      let x = rnd(1,40);
+      let z = rnd(1,40);
+      let y = 30;
+   clouds.push(new Cloud(x,y,z));
+           
+    }
 
     for(let y= 2; y < 10; y+=rnd(0.2,2)){
       let x = -0.3;
@@ -120,7 +128,9 @@ document.querySelectorAll('#output')[0].setAttribute('value', `score: ${score}`)
       loop();
       function loop(){
 
-    
+    for(let cloud of clouds){
+      cloud.move();
+    }
 
       for (let minotaur of minotaurs) {
     
