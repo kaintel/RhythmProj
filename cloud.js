@@ -1,16 +1,22 @@
-// <a-gltf-model src="#cloud" position="0 50 0"></a-gltf-model>
+class Cloud{
+  constructor(x,y,z){
+this.x = x;
+this.dx = 0.2;
+this.y = y;
+this.z = z;
+      this.obj = document.createElement("a-gltf-model");
+      this.obj.setAttribute("src","#cloud");
+      this.obj.setAttribute("position",{x:x,y:y,z:z});
+      scene.append(this.obj);    
 
-const scene = document.querySelector("#scene");
-console.log(scene);
-function addClouds(numOfClouds){
-  console.log("hello world");
-  console.log(scene);
-  const cloud = document.createElement("a-gltf-model");
-  cloud.setAttribute("src","#cloud");
-  cloud.setAttribute("position","0 50 0");
-  console.log(cloud);
-  scene.appendChild(cloud);
 
+
+
+
+
+  }
+ move(){
+  this.x -= this.dx;
+  this.obj.setAttribute("position",{x:this.x, y:this.y, z:this.z});
+    }
 }
-
-addClouds(10);
