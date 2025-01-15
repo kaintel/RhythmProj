@@ -1,6 +1,6 @@
 let rnd = (l,u) => Math.random() * (u-l) + l
-let scene, camera, notes = [], minotaurs = [],
-monster2s = [], scorenotes = [], score = 0;
+let scene, camera, note1s = [], note2s = [], note3s = [], note4s = [],
+minotaurs = [],monster2s = [], scorenotes = [], score = 0;
 
 window.onload = function(){
     scene = document.querySelector("a-scene");
@@ -9,28 +9,29 @@ window.onload = function(){
     cursor = document.querySelector("a-cursor");
     cylinderCursor = document.querySelector("cylinderCursor");
  
+
+    for(let y= 2; y < 10; y+=rnd(0.2,1)){
+      let x = -0.3;
+   note1s.push(new Note1(x,y,0));
+           
+    }
+
     for(let y= 2; y < 10; y+=rnd(0.2,1)){
         let x = -0.1;
-     notes.push(new Note(x,y,0));
+     note2s.push(new Note2(x,y,0));
              
       }
 
       for(let y= 2; y <10; y+=rnd(0.2,1)){
         let x = 0.1;
-     notes.push(new Note(x,y,0));
+     note3s.push(new Note3(x,y,0));
              
       }
-
-      
-    for(let y= 2; y < 10; y+=rnd(0.2,1)){
-      let x = -0.3;
-   notes.push(new Note(x,y,0));
-           
-    }
+  
 
     for(let y= 2; y <10; y+=rnd(0.2,1)){
       let x = 0.3;
-   notes.push(new Note(x,y,0));
+   note4s.push(new Note4(x,y,0));
            
     }
 
@@ -57,18 +58,62 @@ window.onload = function(){
       window.addEventListener("keydown",function(e){
         
         for (let scorenote of scorenotes) {
-          for (let note of notes) {
+          for (let note1 of note1s) {
      
-            let d3 = distance(scorenote.obj, note.obj);
-            if(d3 <0.15 && e.key == " "){
-              console.log(this.x);
-  note.scoring();
+            let d3 = distance(scorenote.obj, note1.obj);
+
+            if(d3 <0.15 && e.key == "a"){            
+  note1.scoring();
   document.querySelectorAll('#output')[0].setAttribute('value', `score: ${score}`);
-          }
-    
+          }  
         }
       }
     })
+
+    window.addEventListener("keydown",function(e){
+        
+      for (let scorenote of scorenotes) {
+        for (let note2 of note2s) {
+   
+          let d = distance(scorenote.obj, note2.obj);
+          
+          if(d <0.15 && e.key == "s"){            
+note2.scoring();
+document.querySelectorAll('#output')[0].setAttribute('value', `score: ${score}`);
+        }  
+      }
+    }
+  })
+
+    window.addEventListener("keydown",function(e){
+        
+      for (let scorenote of scorenotes) {
+        for (let note3 of note3s) {
+   
+          let d = distance(scorenote.obj, note3.obj);
+
+          if(d <0.15 && e.key == "k"){            
+note3.scoring();
+document.querySelectorAll('#output')[0].setAttribute('value', `score: ${score}`);
+        }  
+      }
+    }
+  })
+
+  window.addEventListener("keydown",function(e){
+        
+    for (let scorenote of scorenotes) {
+      for (let note4 of note4s) {
+ 
+        let d = distance(scorenote.obj, note4.obj);
+
+        if(d <0.15 && e.key == "l"){            
+note4.scoring();
+document.querySelectorAll('#output')[0].setAttribute('value', `score: ${score}`);
+      }  
+    }
+  }
+})
     
     }
 
@@ -79,18 +124,30 @@ window.onload = function(){
 
       for (let minotaur of minotaurs) {
     
-        let d1 = distance(mainCamera, minotaur.obj);
+        let d = distance(mainCamera, minotaur.obj);
         
-        if(d1<1.6){
+        if(d<1.6){
           minotaur.attack()
           cylinderCamera.setAttribute("active",true);
           mainCamera.setAttribute("active",false);
      
         setTimeout(() => {
-          for (let note of notes) {
-            note.move();
+          for (let note1 of note1s) {
+            note1.move();
   
         }
+        for (let note2 of note2s) {
+          note2.move();
+
+      }
+      for (let note3 of note3s) {
+        note3.move();
+
+    }
+    for (let note4 of note4s) {
+      note4.move();
+
+  }
         }, 1000);//time before notes start falling//
     
         }
@@ -99,9 +156,9 @@ window.onload = function(){
 
       for (let monster2 of monster2s) {
     
-        let d2 = distance(mainCamera, monster2.obj);
+        let d = distance(mainCamera, monster2.obj);
         
-        if(d2<1.6){
+        if(d<1.6){
           monster2.attack()
           cylinderCamera.setAttribute("active",true);
           mainCamera.setAttribute("active",false);
