@@ -11,12 +11,12 @@ window.onload = function(){
     cylinderCursor = document.querySelector("cylinderCursor");
  
     for(let x= -0.3; x <0.4; x+=0.2){
-      let y = 0;
+      let y = -0.8;
    missbars.push(new Missbar(x,y,0));
            
     }
 
-    for(let y= 2; y < 10; y+=rnd(0.2,2)){
+    for(let y= 2; y < 20; y+=rnd(0.2,2)){
       let x = -0.3;
    note1s.push(new Note1(x,y,0));
            
@@ -65,19 +65,16 @@ window.onload = function(){
         
         for (let scorenote of scorenotes) {
           for (let note1 of note1s) {
-
+           
             let d = distance(scorenote.obj, note1.obj);
-       
             if(d <0.15 && note1.y <-0.45 && e.key == "s"){            
   note1.scoring();
   document.querySelectorAll('#output')[0].setAttribute('value', `score: ${score}`);
   document.querySelectorAll('#output')[1].setAttribute('value', `combo: ${combo}`);
-          } 
-           if( d >0.15 &&note1.y >-0.45 && e.key == "s"){
-        note1.miss();
-        document.querySelectorAll('#output')[1].setAttribute('value', `combo: ${combo}`);
+
+      
       }
-      }
+    }
     }
     })
 
