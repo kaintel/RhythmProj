@@ -69,7 +69,7 @@ window.onload = function(){
             let d = distance(scorenote.obj, note1.obj);
             if(d <0.15 && note1.y <-0.45 && e.key == "s"){            
   note1.scoring();
-  document.querySelectorAll('#output')[0].setAttribute('value', `score: ${score}`);
+  document.querySelectorAll('#output')[0].setAttribute('value', `score: ${Math.round(score)}`);
   document.querySelectorAll('#output')[1].setAttribute('value', `combo: ${combo}`);
 
       
@@ -77,7 +77,6 @@ window.onload = function(){
     }
     }
     })
-
 
 
     window.addEventListener("keydown",function(e){
