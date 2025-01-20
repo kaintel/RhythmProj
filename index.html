@@ -8,17 +8,16 @@
     <script src="monster2.js"></script>
     <script src="scorenote.js"></script>
     <script src="cloud.js"></script>
-    <script src="missbar.js"></script>
+
   </head>
 
     <body >
       <a-scene id="scene">
         <a-assets>
                  
-          <!-- <a-assets-item id="winter" src="low_poly_winter_scene/scene.gltf"></a-assets-item> -->
       
           <a-assets-item id="sky" src="images/sky.jpg"></a-assets-item>
-          <!-- <a-assets-item id="grass" src="images/grass1.jpg"></a-assets-item> -->
+          <a-assets-item id="dungeon" src="modular_dungeon_kit/scene.gltf"></a-assets-item>
           <a-assets-item id="forest" src="low_poly_environments_01/scene.gltf"></a-assets-item>
           <a-assets-item id="mino" src="minotaur_low-poly/scene.gltf"></a-assets-item>
           <a-assets-item id="monster2" src="monsters_01/scene.gltf"></a-assets-item>
@@ -27,8 +26,8 @@
           <!-- assets -->
 
         </a-assets>
-
-        <a-gltf-model  src="#winter" position="0 0.5 0" ></a-gltf-model>
+     
+        <a-gltf-model  scale = "5 5 5" src="#dungeon" position="0 0.5 0" ></a-gltf-model>
         <a-gltf-model  src="#forest" position="0 0 0" ></a-gltf-model>
         <a-gltf-model  src="#forest" position="-50 0 0" ></a-gltf-model>
 
@@ -45,7 +44,7 @@
 
         
         <a-plane material="src:#grass;repeat: 30 30" position="0 0 -5" rotation="-90 0 0" width="50" height="50"></a-plane>
-      <a-plane color="gray" position="0 0 -5" rotation="-90 0 0" width="50" height="50"></a-plane>
+      <a-plane color="black" position="0 0 -5" rotation="-90 0 0" width="50" height="50"></a-plane>
         
         <a-camera active id="mainCamera" position="10 1.5 0">
           <a-cursor id="mainCursor" raycaster="objects: [interact]">
