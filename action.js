@@ -47,6 +47,10 @@ window.onload = function () {
     monster2s.push(new Monster2(x, 0, z));
   }
 
+  for (let a = 0; a < 1 ; a += 1) {
+    
+  }
+ 
   window.addEventListener("keydown", function (e) {
 
     for (let note1 of note1s) {
@@ -94,7 +98,7 @@ window.onload = function () {
       }
     }
   })
-
+  
 }
 
 loop();
