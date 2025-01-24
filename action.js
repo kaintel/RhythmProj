@@ -1,7 +1,7 @@
 let rnd = (l, u) => Math.random() * (u - l) + l
 let scene, camera, note1s = [], note2s = [], note3s = [], note4s = [],
   minotaurs = [], monster2s = [], scorenotes = [], score = 0, combo = 0,
-  clouds = [];
+  clouds = [], skys = [];
 
 window.onload = function () {
   scene = document.querySelector("a-scene");
@@ -9,6 +9,8 @@ window.onload = function () {
   cylinderCamera = document.getElementById("cylinderCamera");
   cursor = document.querySelector("a-cursor");
   cylinderCursor = document.querySelector("cylinderCursor");
+
+  skys.push(new Sky(0,0,0));
 // notes
   for (let y = 2; y < 20; y += rnd(0.2, 2)) {
     let x = -0.3;
@@ -103,7 +105,9 @@ window.onload = function () {
 
 loop();
 function loop() {
-
+for (let sky of skys){
+  sky.rotate();
+}
   for (let minotaur of minotaurs) {
     let d = distance(mainCamera, minotaur.obj);
     if (d < 1.6) {
