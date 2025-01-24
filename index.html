@@ -8,45 +8,46 @@
     <script src="monster2.js"></script>
     <script src="scorenote.js"></script>
     <script src="cloud.js"></script>
-
+    <script src="sky.js"></script>
   </head>
 
     <body >
       <a-scene id="scene">
-        <a-assets>          
+        <a-assets>
+                 
       
           <a-assets-item id="sky" src="images/sky.jpg"></a-assets-item>
-          <a-assets-item id="sky2" src="fan.jpeg"></a-assets-item>
+          <a-assets-item id="sky2" src="images/fan.jpeg"></a-assets-item>
           <a-assets-item id="dungeon" src="modular_dungeon_kit/scene.gltf"></a-assets-item>
           <a-assets-item id="forest" src="low_poly_environments_01/scene.gltf"></a-assets-item>
           <a-assets-item id="mino" src="minotaur_low-poly/scene.gltf"></a-assets-item>
           <a-assets-item id="monster2" src="monsters_01/scene.gltf"></a-assets-item>
-          <!-- <a-assets-item id="cloud"src="cloud_test/scene.gltf"></a-assets-item> -->
-          
+          <a-assets-item id="cloud"src="cloud_test/scene.gltf"></a-assets-item> 
+          <!-- assets -->
+
         </a-assets>
-     
+      
         <a-gltf-model  scale = "5 5 5" src="#dungeon" position="0 0.5 0" ></a-gltf-model>
-        <a-gltf-model  src="#forest" position="0 0 0" ></a-gltf-model> 
-        <a-sky src="#sky"></a-sky> 
-        <!-- <a-sky src="#sky2" rotation="45 30 0"></a-sky>   -->
-        
-        
-        
- 
-      <a-plane color="black" position="0 0 -5" rotation="-90 0 0" width="50" height="50"></a-plane>
+        <a-gltf-model src="#forest" position="0 0 0" ></a-gltf-model>
+       
+     
         
         <a-camera active id="mainCamera" position="10 1.5 0">
           <a-cursor id="mainCursor" raycaster="objects: [interact]">
+     
+			
+	
+            
+        
           </a-cursor>
         </a-camera>
-
         <a-camera active="false" id="cylinderCamera" position="-25 6 0" wasd-controls-enabled="false">
           <a-cursor raycaster="objects: [interact]" id="cylinderCursor">
             <a-text id="output" value="score" scale="0.2 0.2 0.2" position="-1.7 0.7 0"></a-text>
             <a-text id="output" value="combo" scale="0.2 0.2 0.2" position="-1.5 -0.6 0"></a-text>
+    
           </a-cursor>
         </a-camera>
-
       </a-scene>
 
     </body>
