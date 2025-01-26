@@ -9,6 +9,7 @@
     <script src="scorenote.js"></script>
     <script src="cloud.js"></script>
     <script src="sky.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@4.0.0/dist/aframe-physics-system.min.js"></script>
   </head>
 
     <body >
@@ -23,16 +24,35 @@
           <a-assets-item id="mino" src="minotaur_low-poly/scene.gltf"></a-assets-item>
           <a-assets-item id="monster2" src="monsters_01/scene.gltf"></a-assets-item>
           <a-assets-item id="cloud"src="cloud_test/scene.gltf"></a-assets-item> 
+          <a-assets-item id="wall" src="modular_dungeon_kit/onewall.glb"></a-assets-item>
           <!-- assets -->
 
         </a-assets>
       
-        <a-gltf-model  scale = "5 5 5" src="#dungeon" position="0 0.5 0" ></a-gltf-model>
+        <a-gltf-model  scale = "5 5 5" src="#dungeon" position="0 -10 0" ></a-gltf-model>
         <a-gltf-model src="#forest" position="0 0 0" ></a-gltf-model>
+
+        <a-entity id="mainRoom">
+      <!-- front -->
+          <a-gltf-model src="#wall" rotation="0 0 0" scale="5 5 2.2" position="0 0 -5"></a-gltf-model>
+          <a-box depth="5" height="5" width="0.3" position="0 0 -5" opacity="0 0 0" static-body></a-box>
+
+      <!-- back -->
+          <a-gltf-model src="#wall" rotation="0 180 0" scale="5 5 5" position="10 0 -5"></a-gltf-model>
+
+      <!-- left -->
+          <a-gltf-model src="#wall" rotation="0 90 0" scale="5 5 5" position="5 0 -10"></a-gltf-model>
+
+      <!-- right -->
+          <a-gltf-model src="#wall" rotation="0 -90 0" scale="5 5 5" position="5 0 0"></a-gltf-model>
+        </a-entity>
+
+
        
      
         <a-plane position="0 0 0" rotation="-90 0 0" width="50" height="50" color="gray"></a-plane>
-        <a-camera active id="mainCamera" position="10 1.5 0">
+      
+        <a-camera active id="mainCamera" position="7 1.5 -5" dynamic-body="shape:sphere">
           <a-cursor id="mainCursor" raycaster="objects: [interact]">
      
 			
