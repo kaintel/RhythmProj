@@ -1,7 +1,7 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.1.0/dist/aframe-extras.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.1.0/dist/aframe-extras.min.js"></script> -->
     <script src="note.js"></script>
     <script src="action.js"></script>
     <script src="minotaur.js"></script>
@@ -9,13 +9,13 @@
     <script src="scorenote.js"></script>
     <script src="cloud.js"></script>
     <script src="sky.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@4.0.0/dist/aframe-physics-system.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@4.0.0/dist/aframe-physics-system.min.js"></script> -->
   </head>
 
     <body >
       <a-scene id="scene">
         <a-assets>
-                 
+          <img id="floor" src="floor.jpg">
       
           <a-assets-item id="sky" src="images/sky.jpg"></a-assets-item>
           <a-assets-item id="sky2" src="images/fan.jpeg"></a-assets-item>
@@ -47,10 +47,17 @@
           <a-gltf-model src="#wall" rotation="0 -90 0" scale="5 5 5" position="5 0 0"></a-gltf-model>
         </a-entity>
 
+        <a-entity id="hallway">
+          <a-gltf-model src="#wall" scale="5 5 5" position="-5 0 -10"></a-gltf-model>
+          <a-gltf-model src="#wall" scale="5 5 5" position="-5 0 2"></a-gltf-model>
+          <a-gltf-model src="#wall" rotation="0 -90 0" scale="5 5 5" position="1 0 -14"></a-gltf-model>
+          <a-gltf-model src="#wall" rotation="0 90 0" scale="5 5 5" position="1 0 3.5"></a-gltf-model>
+        </a-entity>
+
 
        
      
-        <a-plane position="0 0 0" rotation="-90 0 0" width="50" height="50" color="gray"></a-plane>
+        <a-plane position="0 0 0" rotation="-90 0 0" width="50" height="50" color="gray" material="src: #floor;repeat: 30 30"></a-plane>
       
         <a-camera active id="mainCamera" position="7 1.5 -5" dynamic-body="shape:sphere">
           <a-cursor id="mainCursor" raycaster="objects: [interact]">
