@@ -1,6 +1,6 @@
 let rnd = (l, u) => Math.random() * (u - l) + l
 let scene, camera, note1s = [], note2s = [], note3s = [], note4s = [],
-  minotaurs = [], monster2s = [], scorenotes = [], score = 0, combo = 0,
+  minotaurs = [], monster2s = [], scorenotes = [], score = 0, combo = 0, miss = 0,
   clouds = [], skys = [];
 
 window.onload = function () {
@@ -37,7 +37,7 @@ window.onload = function () {
     scorenotes.push(new Scorenote(x, y, 0));
   }
 // monsters
-  for (let a = 1; a < 3; a += 1) {
+  for (let a = 1; a < 2; a += 1) {
     let x = rnd(-3, 3);
     let z = 10;
     minotaurs.push(new Minotaur(x, 0, z));
@@ -103,17 +103,62 @@ window.onload = function () {
   
 }
 
+function reset(){
+  mainCamera.setAttribute("active", true);
+  cylinderCamera.setAttribute("active", false);
+  score = 0;
+  combo = 0;
+  for (let note1 of note1s) {
+    note1.y += 4;
+  }
+  for (let note2 of note2s) {
+    note2.y += 4;
+  }
+  for (let note3 of note3s) {
+    note3.y += 4;
+  }
+  for (let note4 of note4s) {
+    note4.y += 4;
+  }
+  this.flag = false;
+  miss = 0;
+}
+
 loop();
 function loop() {
+  let enemySlain = document.querySelector('#slain');
+  let die = document.querySelector('#Died');
 for (let sky of skys){
   sky.rotate();
 }
   for (let minotaur of minotaurs) {
     let d = distance(mainCamera, minotaur.obj);
     if (d < 1.6) {
-      minotaur.attack()
-      cylinderCamera.setAttribute("active", true);
-      mainCamera.setAttribute("active", false);
+      this.flag = true;
+      mainCamera.setAttribute("position", { x: 7, y: 1.5, z: -5 });
+    }
+        if (this.flag==true) {
+          minotaur.attack()
+          cylinderCamera.setAttribute("active", true);
+          mainCamera.setAttribute("active", false);
+    
+          if (score >= 10000) {
+            reset();
+            minotaur.dead();
+            enemySlain.setAttribute('opacity', 1);
+            setTimeout(() => {
+              enemySlain.setAttribute('opacity', 0);
+            }, 2000);  
+
+          }
+
+          if (miss >= 10){
+            reset();
+            die.setAttribute('opacity', 1);
+            setTimeout(() => {
+              die.setAttribute('opacity', 0);
+            }, 2000);  
+          }
 
       setTimeout(() => {
         for (let note1 of note1s) {

@@ -1,7 +1,7 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.1.0/dist/aframe-extras.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.1.0/dist/aframe-extras.min.js"></script>
     <script src="note.js"></script>
     <script src="action.js"></script>
     <script src="minotaur.js"></script>
@@ -10,13 +10,13 @@
     <script src="cloud.js"></script>
     <script src="sky.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.min.js"></script>"
-    <!-- <script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@4.0.0/dist/aframe-physics-system.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@4.0.0/dist/aframe-physics-system.min.js"></script>
   </head>
 
     <body >
       <a-scene id="scene">
         <a-assets>
-          <a-assets-item id="sky" src="images/floor.jpg"></a-assets-item>
+          <a-assets-item id="floorTexture" src="images/floor.jpg"></a-assets-item>
           <a-assets-item id="sky" src="images/sky.jpg"></a-assets-item>
           <a-assets-item id="sky2" src="images/fan.jpeg"></a-assets-item>
           <a-assets-item id="dungeon" src="modular_dungeon_kit/scene.gltf"></a-assets-item>
@@ -63,23 +63,22 @@
        
      
         <a-plane position="0 0 0" rotation="-90 0 0" width="50" height="50" color="gray" material="src: #floorTexture;repeat: 30 30" static-body></a-plane>
-      
+      <!-- MainCamera -->
         <a-camera active id="mainCamera" position="7 1.5 -5" static-body>
           <a-cursor id="mainCursor" raycaster="objects: [interact]">
-     
-			
-	
-            
-        
+            <a-image id="Slain" scale="11 6 10" src="enemy_slain.png" opacity="0" position="0 0 -2"></a-image>
+            <a-image id="Died" scale="11 1 10" src="died.png" opacity="0" position="0 0 -2"></a-image>
           </a-cursor>
         </a-camera>
+
+     <!-- Enemy Camera -->
         <a-camera active="false" id="cylinderCamera" position="-25 6 0" wasd-controls-enabled="false">
           <a-cursor raycaster="objects: [interact]" id="cylinderCursor">
             <a-text id="output" value="score" scale="0.2 0.2 0.2" position="-1.7 0.7 0"></a-text>
             <a-text id="output" value="combo" scale="0.2 0.2 0.2" position="-1.5 -0.6 0"></a-text>
-    
           </a-cursor>
         </a-camera>
+
       </a-scene>
 
     </body>
