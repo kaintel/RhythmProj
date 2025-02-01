@@ -44,6 +44,7 @@ class Note1 {
   miss() {
     this.obj.setAttribute("opacity", "0");
     combo = 0;
+    miss += 1;
   }
 
 }
@@ -93,6 +94,7 @@ class Note2 {
   miss() {
     this.obj.setAttribute("opacity", "0");
     combo = 0;
+    miss += 1;
   }
 
 }
@@ -141,6 +143,7 @@ class Note3 {
   miss() {
     this.obj.setAttribute("opacity", "0");
     combo = 0;
+    miss += 1;
   }
 
 }
@@ -190,6 +193,7 @@ class Note4 {
   miss() {
     this.obj.setAttribute("opacity", "0");
     combo = 0;
+    miss += 1;
   }
 
 }

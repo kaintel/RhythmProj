@@ -10,4 +10,8 @@ class Minotaur{
     this.obj.setAttribute("animation-mixer",{timeScale: 4});
       }
 
+      dead(){
+this.obj.parentNode.removeChild(this.obj);
+      }
+
 }
