@@ -1,7 +1,7 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.1.0/dist/aframe-extras.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.1.0/dist/aframe-extras.min.js"></script> -->
     <script src="note.js"></script>
     <script src="action.js"></script>
     <script src="minotaur.js"></script>
@@ -9,12 +9,14 @@
     <script src="scorenote.js"></script>
     <script src="cloud.js"></script>
     <script src="sky.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.min.js"></script>"
-    <script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@4.0.0/dist/aframe-physics-system.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.min.js"></script>" -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@4.0.0/dist/aframe-physics-system.min.js"></script> -->
+     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.min.js"></script>
+     <script src="kinema.js"></script>
   </head>
 
     <body >
-      <a-scene id="scene">
+      <a-scene id="scene" physics="debug: false; gravity: 0 0 0">
         <a-assets>
           <a-assets-item id="floorTexture" src="images/floor.jpg"></a-assets-item>
           <a-assets-item id="sky" src="images/sky.jpg"></a-assets-item>
@@ -35,7 +37,7 @@
         <a-entity id="mainRoom">
       <!-- front -->
           <a-gltf-model src="#wall" rotation="0 0 0" scale="5 5 1" position="0 0 -5"></a-gltf-model>
-          <a-box depth="3" height="5" width="0.3" position="0 0 -5" static-body opacity="0 0 0"></a-box>
+          <a-box depth="3" height="5" width="0.3" position="0 0 -5" static-body id="wall" opacity="0 0 0"></a-box>
           <a-gltf-model src="#wall" rotation="0 90 0" scale="5 5 5" position="-5.5 0 -5"></a-gltf-model>
 
       <!-- back -->
@@ -64,7 +66,7 @@
      
         <a-plane position="0 0 0" rotation="-90 0 0" width="50" height="50" color="gray" material="src: #floorTexture;repeat: 30 30" static-body></a-plane>
       <!-- MainCamera -->
-        <a-camera active id="mainCamera" position="7 1.5 -5" static-body>
+        <a-camera active id="mainCamera" position="7 1.5 -5" kinema-body="radius: 0.8">
           <a-cursor id="mainCursor" raycaster="objects: [interact]">
             <a-image id="Slain" scale="11 6 10" src="enemy_slain.png" opacity="0" position="0 0 -2"></a-image>
             <a-image id="Died" scale="11 1 10" src="died.png" opacity="0" position="0 0 -2"></a-image>
