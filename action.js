@@ -9,9 +9,9 @@ window.onload = function () {
   cylinderCamera = document.getElementById("cylinderCamera");
   cursor = document.querySelector("a-cursor");
   cylinderCursor = document.querySelector("cylinderCursor");
-
   skys.push(new Sky(0,0,0));
 // notes
+
   for (let y = 2; y < 20; y += rnd(0.2, 2)) {
     let x = -0.3;
     note1s.push(new Note1(x, y, 0));
