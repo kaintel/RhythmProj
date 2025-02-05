@@ -9,27 +9,26 @@ window.onload = function () {
   cylinderCamera = document.getElementById("cylinderCamera");
   cursor = document.querySelector("a-cursor");
   cylinderCursor = document.querySelector("cylinderCursor");
-
   skys.push(new Sky(0,0,0));
 // notes
   for (let y = 2; y < 20; y += rnd(0.2, 2)) {
     let x = -0.3;
-    note1s.push(new Note1(x, y, 0));
+    note1s.push(new Note(x, y, 0));
   }
 
   for (let y = 2; y < 20; y += rnd(0.2, 2)) {
     let x = -0.1;
-    note2s.push(new Note2(x, y, 0));
+    note2s.push(new Note(x, y, 0));
   }
 
   for (let y = 2; y < 20; y += rnd(0.2, 2)) {
     let x = 0.1;
-    note3s.push(new Note3(x, y, 0));
+    note3s.push(new Note(x, y, 0));
   }
 
   for (let y = 2; y < 20; y += rnd(0.2, 2)) {
     let x = 0.3;
-    note4s.push(new Note4(x, y, 0));
+    note4s.push(new Note(x, y, 0));
   }
 // scorenote
   for (let x = -0.3; x < 0.4; x += 0.2) {
@@ -59,8 +58,7 @@ window.onload = function () {
       if (note1.y > -0.55 && note1.y < -0.45 && e.key == "s") {
         note1.scoring();
         note1s.splice(note1s.indexOf(note1), 1);
-        document.querySelectorAll('#output')[0].setAttribute('value', `score: ${Math.round(score)}`);
-        document.querySelectorAll('#output')[1].setAttribute('value', `combo: ${combo}`);
+        display();
       }
     }
   })
@@ -71,8 +69,7 @@ window.onload = function () {
       if (note2.y > -0.55 && note2.y < -0.45 && e.key == "d") {
         note2.scoring();
         note2s.splice(note2s.indexOf(note2), 1);
-        document.querySelectorAll('#output')[0].setAttribute('value', `score: ${Math.round(score)}`);
-        document.querySelectorAll('#output')[1].setAttribute('value', `combo: ${combo}`);
+        display();
       }
     }
   })
@@ -83,8 +80,7 @@ window.onload = function () {
       if (note3.y > -0.55 && note3.y < -0.45 && e.key == "j") {
         note3.scoring();
         note3s.splice(note3s.indexOf(note3), 1);
-        document.querySelectorAll('#output')[0].setAttribute('value', `score: ${Math.round(score)}`);
-        document.querySelectorAll('#output')[1].setAttribute('value', `combo: ${combo}`);
+        display();
       }
     }
   })
@@ -95,33 +91,11 @@ window.onload = function () {
       if (note4.y > -0.55 && note4.y < -0.45 && e.key == "k") {
         note4.scoring();
         note4s.splice(note4s.indexOf(note4), 1);
-        document.querySelectorAll('#output')[0].setAttribute('value', `score: ${Math.round(score)}`);
-        document.querySelectorAll('#output')[1].setAttribute('value', `combo: ${combo}`);
+        display();
       }
     }
   })
   
-}
-
-function reset(){
-  mainCamera.setAttribute("active", true);
-  cylinderCamera.setAttribute("active", false);
-  score = 0;
-  combo = 0;
-  for (let note1 of note1s) {
-    note1.y += 4;
-  }
-  for (let note2 of note2s) {
-    note2.y += 4;
-  }
-  for (let note3 of note3s) {
-    note3.y += 4;
-  }
-  for (let note4 of note4s) {
-    note4.y += 4;
-  }
-  this.flag = false;
-  miss = 0;
 }
 
 loop();
@@ -136,6 +110,7 @@ for (let sky of skys){
     if (d < 1.6) {
       this.flag = true;
       mainCamera.setAttribute("position", { x: 7, y: 1.5, z: -5 });
+      cylinderCamera.components.sound.playSound();
     }
         if (this.flag==true) {
           minotaur.attack()
@@ -146,53 +121,25 @@ for (let sky of skys){
             reset();
             minotaur.dead();
             enemySlain.setAttribute('opacity', 1);
+            display();
             setTimeout(() => {
               enemySlain.setAttribute('opacity', 0);
             }, 2000);  
-
           }
 
           if (miss >= 10){
             reset();
             die.setAttribute('opacity', 1);
+            display();
             setTimeout(() => {
               die.setAttribute('opacity', 0);
             }, 2000);  
           }
 
       setTimeout(() => {
-        for (let note1 of note1s) {
-          note1.move();
-          if (note1.y < -0.55) {
-            note1.miss();
-            document.querySelectorAll('#output')[1].setAttribute('value', `combo: ${combo}`);
-            note1s.splice(note1s.indexOf(note1), 1);
-          }
-        }
-        for (let note2 of note2s) {
-          note2.move();
-          if (note2.y < -0.55) {
-            note2.miss();
-            document.querySelectorAll('#output')[1].setAttribute('value', `combo: ${combo}`);
-            note2s.splice(note2s.indexOf(note2), 1);
-          }
-        }
-        for (let note3 of note3s) {
-          note3.move();
-          if (note3.y < -0.55) {
-            note3.miss();
-            document.querySelectorAll('#output')[1].setAttribute('value', `combo: ${combo}`);
-            note3s.splice(note3s.indexOf(note3), 1);
-          }
-        }
-        for (let note4 of note4s) {
-          note4.move();
-          if (note4.y < -0.55) {
-            note4.miss();
-            document.querySelectorAll('#output')[1].setAttribute('value', `combo: ${combo}`);
-            note4s.splice(note4s.indexOf(note4), 1);
-          }
-        }
+
+play();
+
       }, 1000);//time before notes start falling//
 
     }
