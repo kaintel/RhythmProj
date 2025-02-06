@@ -5,7 +5,6 @@ class Note {
     this.dy = 0.005;
     this.x = x;
     this.z = z;
-    this.missed = 1;
     this.flag = false;
     this.obj = document.createElement("a-circle");
     this.obj.setAttribute("radius", 0.1);
