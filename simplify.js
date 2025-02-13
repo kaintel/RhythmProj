@@ -30,7 +30,6 @@ function display(){
   function play(){
     for (let yourhealth of yourhealths) {
       
-    
     for (let note1 of note1s) {
         note1.move();
         if (note1.y < -0.55) {
