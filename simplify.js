@@ -25,6 +25,9 @@ function display(){
     for (let yourhealth of yourhealths) {
     yourhealth.returnhealth();
     }
+    for (let enemyhealth of enemyhealths) {
+      enemyhealth.returnhealth();
+      }
   }
 
   function play(){

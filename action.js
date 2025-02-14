@@ -1,7 +1,7 @@
 let rnd = (l, u) => Math.random() * (u - l) + l
 let scene, camera, note1s = [], note2s = [], note3s = [], note4s = [],
   minotaurs = [], monster2s = [], scorenotes = [], score = 0, combo = 0, miss = 0,
-  clouds = [], skys = [], yourhealths = []; 
+  clouds = [], skys = [], yourhealths = [], enemyhealths = []; 
 
 window.onload = function () {
   scene = document.querySelector("a-scene");
@@ -11,6 +11,7 @@ window.onload = function () {
   cylinderCursor = document.querySelector("cylinderCursor");
   skys.push(new Sky(0,0,0));
   yourhealths.push(new yourhealth(1.3,0.7,0));
+  enemyhealths.push(new enemyhealth(0, 0, 0));
 
 // notes
   for (let y = 2; y < 20; y += rnd(0.2, 2)) {
@@ -51,17 +52,20 @@ window.onload = function () {
   }
 
   
- 
+
+  for( let enemyhealth of enemyhealths){
   window.addEventListener("keydown", function (e) {
 
     for (let note1 of note1s) {
       if (note1.y > -0.55 && note1.y < -0.45 && e.key == "s") {
         note1.scoring();
         note1s.splice(note1s.indexOf(note1), 1);
+        enemyhealth.damage();
         display();
       }
     }
   })
+
 
   window.addEventListener("keydown", function (e) {
 
@@ -69,6 +73,7 @@ window.onload = function () {
       if (note2.y > -0.55 && note2.y < -0.45 && e.key == "d") {
         note2.scoring();
         note2s.splice(note2s.indexOf(note2), 1);
+        enemyhealth.damage();
         display();
       }
     }
@@ -80,6 +85,7 @@ window.onload = function () {
       if (note3.y > -0.55 && note3.y < -0.45 && e.key == "j") {
         note3.scoring();
         note3s.splice(note3s.indexOf(note3), 1);
+        enemyhealth.damage();
         display();
       }
     }
@@ -91,12 +97,14 @@ window.onload = function () {
       if (note4.y > -0.55 && note4.y < -0.45 && e.key == "k") {
         note4.scoring();
         note4s.splice(note4s.indexOf(note4), 1);
+        enemyhealth.damage();
         display();
       }
     }
   })
-  
 }
+}
+
 
 loop();
 function loop() {
