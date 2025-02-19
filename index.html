@@ -17,11 +17,12 @@
     <body >
       <a-scene id="scene" physics="debug: false; gravity: 0 0 0">
         <a-assets>
-          <audio id="music1" src="sounds/ninelives.mp3" preload="auto"></audio>
+ 
+          <audio id="music1" src="sounds/ninelives.mp3" preload="auto" poolSize= 2></audio>
            <a-assets-item id="floorTexture" src="images/floor.jpg"></a-assets-item>
           <!-- <a-assets-item id="sky" src="images/sky.jpg"></a-assets-item> -->
           <a-assets-item id="sky2" src="images/fan.jpeg"></a-assets-item>
-          <a-assets-item id="forest" src="low_poly_environments_01/scene.gltf"></a-assets-item> 
+          <!-- <a-assets-item id="forest" src="low_poly_environments_01/scene.gltf"></a-assets-item>  -->
           <a-assets-item id="mino" src="minotaur_low-poly/scene.gltf"></a-assets-item>
           <a-assets-item id="monster2" src="monsters_01/scene.gltf"></a-assets-item>
           <a-assets-item id="cloud"src="cloud_test/scene.gltf"></a-assets-item> 
@@ -100,8 +101,15 @@
         </a-camera>
 
      <!-- Enemy Camera -->
-        <a-camera active="false" sound="src: #music1;loop:false;volume:2" id="cylinderCamera" position="-25 6 0" wasd-controls-enabled="false">
+        <a-camera active="false" sound="src: #music1;loop:false;volume:2;" id="cylinderCamera" position="-25 6 0" wasd-controls-enabled="false">
           <a-cursor raycaster="objects: [interact]" id="cylinderCursor">
+            <a-text id="output" value="score" scale="0.2 0.2 0.2" position="-1.7 0.7 0"></a-text>
+            <a-text id="output" value="combo" scale="0.2 0.2 0.2" position="-1.5 -0.6 0"></a-text>
+          </a-cursor>
+        </a-camera>
+
+        <a-camera active="false" sound="src:#music2" id="circleCamera" position="25 6 0" wasd-controls-enabled="false">
+          <a-cursor raycaster="objects: [interact]" id="circleCursor">
             <a-text id="output" value="score" scale="0.2 0.2 0.2" position="-1.7 0.7 0"></a-text>
             <a-text id="output" value="combo" scale="0.2 0.2 0.2" position="-1.5 -0.6 0"></a-text>
           </a-cursor>
