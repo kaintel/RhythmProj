@@ -1,5 +1,5 @@
 class yourhealth{
-    constructor(x,y,z){
+    constructor(x,y,z,c){
         this.y = y;
         this.x = x;
         this.rx = x;
@@ -20,7 +20,7 @@ class yourhealth{
       this.obj2.setAttribute("color","red");
       this.obj2.setAttribute("position",{x:x, y:y, z:z});
 
-      cursor = document.getElementById("cylinderCursor");
+      cursor = document.getElementById(c);
       cursor.append(this.obj2);
       cursor.append(this.obj);
     }
@@ -42,7 +42,7 @@ class yourhealth{
 }
 
 class enemyhealth{
-  constructor(x,y,z){
+  constructor(x,y,z,c){
       this.y = y;
       this.x = x;
       this.rx = x;
@@ -63,7 +63,7 @@ class enemyhealth{
     this.obj2.setAttribute("color","red");
     this.obj2.setAttribute("position",{x:x, y:y, z:z});
 
-    cursor = document.getElementById("cylinderCursor");
+    cursor = document.getElementById(c);
     cursor.append(this.obj2);
     cursor.append(this.obj);
   }
@@ -71,8 +71,6 @@ class enemyhealth{
   damage(){
     this.cs = (combo*100)/10000;
     this.s+=(this.cs*0.7);
-    console.log(this.s);
-
     this.obj.setAttribute("width",0.7-this.s);
     this.obj.setAttribute("position",{x:this.x, y:this.y, z:this.z});
     

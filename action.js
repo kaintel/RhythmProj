@@ -1,6 +1,6 @@
 let rnd = (l, u) => Math.random() * (u - l) + l
 let scene, camera, note1s = [], note2s = [], note3s = [], note4s = [],
-  minotaurs = [], monster2s = [], scorenotes = [], score = 0, combo = 0, miss = 0,
+   minotaurs = [],monster2s = [], scorenotes = [], score = 0, combo = 0, miss = 0,
   clouds = [], skys = [], yourhealths = [], enemyhealths = []; 
 
 window.onload = function () {
@@ -10,99 +10,23 @@ window.onload = function () {
   cursor = document.querySelector("a-cursor");
   cylinderCursor = document.querySelector("cylinderCursor");
   skys.push(new Sky(0,0,0));
-  yourhealths.push(new yourhealth(1.3,0.7,0));
-  enemyhealths.push(new enemyhealth(0, 0, 0));
 
-// notes
-  for (let y = 2; y < 20; y += rnd(0.2, 2)) {
-    let x = -0.3;
-    note1s.push(new Note(x, y, 0));
-  }
+  yourhealths.push(new yourhealth(1.3,0.7,0,"cylinderCursor"));
+  enemyhealths.push(new enemyhealth(0, 0, 0,"cylinderCursor"));
 
-  for (let y = 2; y < 20; y += rnd(0.2, 2)) {
-    let x = -0.1;
-    note2s.push(new Note(x, y, 0));
-  }
+  yourhealths.push(new yourhealth(1.3,0.7,0,"circleCursor"));
+  enemyhealths.push(new enemyhealth(0, 0, 0,"circleCursor"));
 
-  for (let y = 2; y < 20; y += rnd(0.2, 2)) {
-    let x = 0.1;
-    note3s.push(new Note(x, y, 0));
-  }
-
-  for (let y = 2; y < 20; y += rnd(0.2, 2)) {
-    let x = 0.3;
-    note4s.push(new Note(x, y, 0));
-  }
-// scorenote
-  for (let x = -0.3; x < 0.4; x += 0.2) {
-    let y = -0.5;
-    scorenotes.push(new Scorenote(x, y, 0));
-  }
+  new build(Note,Scorenote, "cylinderCursor");
+  cylinderCamera.components.sound.playSound();
 // monsters
-  for (let a = 1; a < 2; a += 1) {
-    let x = rnd(-3, 3);
-    let z = 10;
-    minotaurs.push(new Minotaur(x, 0, z));
-  }
 
-  for (let a = 1; a < 2; a += 1) {
-    let x = rnd(-3, 3);
-    let z = 15;
-    monster2s.push(new Monster2(x, 0, z));
-  }
 
+minotaurs.push(new Minotaur(0, 0, 10));
+monster2s.push(new Monster2(1, 0, 15));
+
+hit();
   
-
-  for( let enemyhealth of enemyhealths){
-  window.addEventListener("keydown", function (e) {
-
-    for (let note1 of note1s) {
-      if (note1.y > -0.55 && note1.y < -0.45 && e.key == "s") {
-        note1.scoring();
-        note1s.splice(note1s.indexOf(note1), 1);
-        enemyhealth.damage();
-        display();
-      }
-    }
-  })
-
-
-  window.addEventListener("keydown", function (e) {
-
-    for (let note2 of note2s) {
-      if (note2.y > -0.55 && note2.y < -0.45 && e.key == "d") {
-        note2.scoring();
-        note2s.splice(note2s.indexOf(note2), 1);
-        enemyhealth.damage();
-        display();
-      }
-    }
-  })
-
-  window.addEventListener("keydown", function (e) {
-
-    for (let note3 of note3s) {
-      if (note3.y > -0.55 && note3.y < -0.45 && e.key == "j") {
-        note3.scoring();
-        note3s.splice(note3s.indexOf(note3), 1);
-        enemyhealth.damage();
-        display();
-      }
-    }
-  })
-
-  window.addEventListener("keydown", function (e) {
-
-    for (let note4 of note4s) {
-      if (note4.y > -0.55 && note4.y < -0.45 && e.key == "k") {
-        note4.scoring();
-        note4s.splice(note4s.indexOf(note4), 1);
-        enemyhealth.damage();
-        display();
-      }
-    }
-  })
-}
 }
 
 
@@ -110,6 +34,7 @@ loop();
 function loop() {
   let enemySlain = document.querySelector('#slain');
   let die = document.querySelector('#Died');
+  
 for (let sky of skys){
   sky.rotate();
 }
@@ -118,9 +43,9 @@ for (let sky of skys){
     if (d < 1.6) {
       this.flag = true;
       mainCamera.setAttribute("position", { x: 7, y: 1.5, z: -5 });
-      cylinderCamera.components.sound.playSound();
     }
         if (this.flag==true) {
+          cylinderCamera.components.sound.playSound();
           minotaur.attack()
           cylinderCamera.setAttribute("active", true);
           mainCamera.setAttribute("active", false);
