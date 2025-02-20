@@ -10,15 +10,11 @@ window.onload = function () {
   cursor = document.querySelector("a-cursor");
   cylinderCursor = document.querySelector("cylinderCursor");
   skys.push(new Sky(0,0,0));
-
+this.flag=false;
+this.flag2=false;
   yourhealths.push(new yourhealth(1.3,0.7,0,"cylinderCursor"));
   enemyhealths.push(new enemyhealth(0, 0, 0,"cylinderCursor"));
 
-  yourhealths.push(new yourhealth(1.3,0.7,0,"circleCursor"));
-  enemyhealths.push(new enemyhealth(0, 0, 0,"circleCursor"));
-
-  new build(Note,Scorenote, "cylinderCursor");
-  cylinderCamera.components.sound.playSound();
 // monsters
 
 
@@ -41,6 +37,9 @@ for (let sky of skys){
   for (let minotaur of minotaurs) {
     let d = distance(mainCamera, minotaur.obj);
     if (d < 1.6) {
+
+
+      new build(Note, Scorenote, "cylinderCursor");
       this.flag = true;
       mainCamera.setAttribute("position", { x: 7, y: 1.5, z: -5 });
     }
@@ -78,24 +77,53 @@ play();
     }
   }
 
-  for (let monster2 of monster2s) {
 
+  for (let monster2 of monster2s) {
     let d = distance(mainCamera, monster2.obj);
     if (d < 1.6) {
-      monster2.attack()
-      cylinderCamera.setAttribute("active", true);
-      mainCamera.setAttribute("active", false);
+
+      new build(Note, Scorenote, "cylinderCursor");
+      this.flag2 = true;
+      mainCamera.setAttribute("position", { x: 10, y: 1.5, z: -5 });
+    }
+        if (this.flag2==true) {
+          cylinderCamera.components.sound.playSound();
+          monster2.attack()
+          cylinderCamera.setAttribute("active", true);
+          mainCamera.setAttribute("active", false);
+    
+          if (score >= 10000) {
+            reset();
+            monster2.dead();
+            enemySlain.setAttribute('opacity', 1);
+            display();
+            setTimeout(() => {
+              enemySlain.setAttribute('opacity', 0);
+            }, 2000);  
+          }
+
+          if (miss >= 10){
+            reset();
+            die.setAttribute('opacity', 1);
+            display();
+            setTimeout(() => {
+              die.setAttribute('opacity', 0);
+            }, 2000);  
+          }
 
       setTimeout(() => {
-        for (let note of notes) {
-          note.move();
 
-        }
+play();
+
       }, 1000);//time before notes start falling//
 
     }
   }
 
+
+
+
+ 
   window.requestAnimationFrame(loop);
 
 }

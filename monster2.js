@@ -10,12 +10,11 @@ class Monster2{
 
 
 
-
-
-
-
     }
-   attack(){
-    this.obj.setAttribute("animation-mixer",{timeScale: 2});
-      }
+    attack(){
+        this.obj.setAttribute("animation-mixer",{timeScale: 2});
+          }
+          dead(){
+            this.obj.parentNode.removeChild(this.obj);
+          }
 }

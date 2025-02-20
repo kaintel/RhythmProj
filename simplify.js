@@ -9,25 +9,36 @@ function display(){
     score = 0;
     combo = 0;
     for (let note1 of note1s) {
-      note1.y += 4;
+      note1.obj.setAttribute("opacity", 0);
     }
     for (let note2 of note2s) {
-      note2.y += 4;
+      note2.obj.setAttribute("opacity", 0);
     }
     for (let note3 of note3s) {
-      note3.y += 4;
+      note3.obj.setAttribute("opacity", 0);
     }
     for (let note4 of note4s) {
-      note4.y += 4;
+      note4.obj.setAttribute("opacity", 0);
     }
-    this.flag = false;
-    miss = 0;
+    for (let scorenote of scorenotes) {
+      scorenote.obj.setAttribute("opacity", 0);
+    }
     for (let yourhealth of yourhealths) {
-    yourhealth.returnhealth();
-    }
-    for (let enemyhealth of enemyhealths) {
-      enemyhealth.returnhealth();
+      yourhealth.returnhealth();
       }
+      for (let enemyhealth of enemyhealths) {
+        enemyhealth.returnhealth(); 
+        }
+note1s.length = 0;
+note2s.length = 0;
+note3s.length = 0;
+note4s.length = 0;
+scorenotes.length = 0;
+
+this.flag = false;
+this.flag2 = false;
+    miss = 0;
+
   }
 
   function play(){
