@@ -8,6 +8,7 @@ function display(){
     cylinderCamera.setAttribute("active", false);
     score = 0;
     combo = 0;
+    miss = 0;
     for (let note1 of note1s) {
       note1.obj.setAttribute("opacity", 0);
     }
@@ -34,10 +35,9 @@ note2s.length = 0;
 note3s.length = 0;
 note4s.length = 0;
 scorenotes.length = 0;
-
 this.flag = false;
 this.flag2 = false;
-    miss = 0;
+this.flag3 = false; 
 
   }
 
@@ -85,25 +85,25 @@ this.flag2 = false;
 
 
   class build{
-    constructor(n,sn,c){
+    constructor(n,sn,c,dy){
       for (let y = 2; y < 20; y += rnd(0.2, 2)) {
         let x = -0.3;
-        note1s.push(new n(x, y, 0, c));
+        note1s.push(new n(x, y, 0, c, dy));
       }
     
       for (let y = 2; y < 20; y += rnd(0.2, 2)) {
         let x = -0.1;
-        note2s.push(new n(x, y, 0, c));
+        note2s.push(new n(x, y, 0, c, dy));
       }
     
       for (let y = 2; y < 20; y += rnd(0.2, 2)) {
         let x = 0.1;
-        note3s.push(new n(x, y, 0, c));
+        note3s.push(new n(x, y, 0, c, dy));
       }
     
       for (let y = 2; y < 20; y += rnd(0.2, 2)) {
         let x = 0.3;
-        note4s.push(new n(x, y, 0, c));
+        note4s.push(new n(x, y, 0, c, dy));
       }
     // scorenote
       for (let x = -0.3; x < 0.4; x += 0.2) {

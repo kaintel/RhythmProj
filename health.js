@@ -38,6 +38,7 @@ class yourhealth{
       this.x = this.rx;
       this.obj.setAttribute("width",0.7);
       this.obj.setAttribute("position",{x:this.rx, y:this.y, z:this.z});
+      
     }
 }
 

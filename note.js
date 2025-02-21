@@ -1,8 +1,8 @@
 
 class Note {
-  constructor(x, y, z, c) {
+  constructor(x, y, z, c, dy) {
     this.y = y;
-    this.dy = 0.005;
+    this.dy = dy;
     this.x = x;
     this.z = z;
 
