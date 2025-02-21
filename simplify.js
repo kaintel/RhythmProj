@@ -168,5 +168,30 @@ function hit(){
 
 
 
+
+  class Startcamera {
+    constructor(x, y, z, dx, dz, r) {
+      this.y = y;
+      this.dx = dx;
+      this.dz = dz;
+      this.x = x;
+      this.z = z;
   
+      this.obj = document.createElement("a-camera");
+      this.obj.setAttribute("position", { x: x, y:y, z: z });
+      this.obj.setAttribute("look-controls", "enabled", "false");
+      this.obj.setAttribute("wasd-controls", "enabled", "false");
+      this.obj.setAttribute("active", "false");
+      this.obj.setAttribute("rotation", { x: 0, y: r, z: 0 });
+      scene.append(this.obj);
+    }
   
+    move() {
+        this.x += this.dx;
+        this.z -= this.dz;
+        this.obj.setAttribute("position", { x: this.x, y: this.y, z: this.z });
+        this.obj.setAttribute("active", "true");
+      
+    }
+  
+  }
