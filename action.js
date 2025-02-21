@@ -1,7 +1,7 @@
 let rnd = (l, u) => Math.random() * (u - l) + l
 let scene, camera, note1s = [], note2s = [], note3s = [], note4s = [],
    minotaurs = [],monster2s = [], scorenotes = [], score = 0, combo = 0, miss = 0,
-  clouds = [], skys = [], yourhealths = [], enemyhealths = [], doctors = []; 
+  clouds = [], skys = [], yourhealths = [], enemyhealths = [], doctors = [], startcameras = []; 
 
 window.onload = function () {
   scene = document.querySelector("a-scene");
@@ -9,10 +9,15 @@ window.onload = function () {
   cylinderCamera = document.getElementById("cylinderCamera");
   cursor = document.querySelector("a-cursor");
   cylinderCursor = document.querySelector("cylinderCursor");
+  startscreen = document.getElementById("startscreen");
+  blacksky = document.getElementById("blacksky");
   skys.push(new Sky(0,0,0));
+  startcameras.push(new Startcamera(0,0,0,10,10,310));
 this.flag=false;
 this.flag2=false;
 this.flag3=false;
+
+this.flagc1=false;
 // monsters
     
 yourhealths.push(new yourhealth(1.3,0.7,0,"cylinderCursor"));
@@ -35,17 +40,46 @@ function loop() {
 for (let sky of skys){
   sky.rotate();
 }
+
   for (let minotaur of minotaurs) {
     let d = distance(mainCamera, minotaur.obj);
     minotaur.idle();
 
-    if (d < 1.6) {
-      new build(Note, Scorenote, "cylinderCursor", 0.005);
-      this.flag = true;
-      mainCamera.setAttribute("position", { x: 7, y: 1.5, z: -5 });
+    if (d < 2.1) {
+      mainCamera.setAttribute("position", { x: 7, y: 2, z: 1 });
+      mainCamera.setAttribute("active", "false");
+      this.flagc1=true;
+  
+      blacksky.setAttribute("visible", "true");
+      startscreen.setAttribute("visible", "true");
+      for (let sky of skys){
+        sky.start();
+      }
+
+
+      setTimeout(() => {
+        new build(Note, Scorenote, "cylinderCursor", 0.005);
+        this.flag = true;
+        blacksky.setAttribute("visible", "false");
+        startscreen.setAttribute("visible", "false");
+        for (let sky of skys){
+          sky.stop();
+        }
+              }, 2000);
+
     }
+
+    if (this.flagc1==true) {
+      for(let startcamera of startcameras){        
+        startcamera.move();      
+    }
+    setTimeout(() => {
+      this.flagc1=false;
+    }, 2000);
+  }
+/////////////////////////////////////////////////////////////////////////////
         if (this.flag==true) {
-          
+
           cylinderCamera.components.sound.playSound();
           cylinderCamera.setAttribute("active", true);
           mainCamera.setAttribute("active", false);
@@ -81,7 +115,7 @@ play();
 
   for (let monster2 of monster2s) {
     let d = distance(mainCamera, monster2.obj);
-    if (d < 1.6) {
+    if (d < 2.1) {
       new build(Note, Scorenote, "cylinderCursor", 0.007);
       this.flag2 = true;
       mainCamera.setAttribute("position", { x: 10, y: 1.5, z: -5 });
@@ -123,7 +157,7 @@ play();
 
   for (let doctor of doctors) {
     let d = distance(mainCamera, doctor.obj);
-    if (d < 1.6) {
+    if (d < 2.1) {
       new build(Note, Scorenote, "cylinderCursor", 0.009);
       this.flag3 = true;
       mainCamera.setAttribute("position", { x: 10, y: 1.5, z: -5 });
