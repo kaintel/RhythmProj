@@ -11,6 +11,7 @@ window.onload = function () {
   cylinderCursor = document.querySelector("cylinderCursor");
   startscreen = document.getElementById("startscreen");
   blacksky = document.getElementById("blacksky");
+  shipsky = document.getElementById("shipsky");
   skys.push(new Sky(0,0,0));
   startcameras.push(new Startcamera(0,0,0,10,10,310));
 this.flag=false;
@@ -28,7 +29,7 @@ minotaurs.push(new Minotaur(0, 0, 0));
 monster2s.push(new Monster2(1, 0, 15));
 doctors.push(new Doctor(-5, 0, 10));
 
-  
+
 }
 
 
@@ -49,22 +50,20 @@ for (let sky of skys){
       mainCamera.setAttribute("position", { x: 7, y: 2, z: 1 });
       mainCamera.setAttribute("active", "false");
       this.flagc1=true;
-  
+      
       blacksky.setAttribute("visible", "true");
       startscreen.setAttribute("visible", "true");
       for (let sky of skys){
-        sky.start();
+        sky.stop();
       }
 
 
       setTimeout(() => {
         new build(Note, Scorenote, "cylinderCursor", 0.005);
         this.flag = true;
+        this.flagc1=false;
         blacksky.setAttribute("visible", "false");
         startscreen.setAttribute("visible", "false");
-        for (let sky of skys){
-          sky.stop();
-        }
               }, 2000);
 
     }
@@ -73,9 +72,7 @@ for (let sky of skys){
       for(let startcamera of startcameras){        
         startcamera.move();      
     }
-    setTimeout(() => {
-      this.flagc1=false;
-    }, 2000);
+    
   }
 /////////////////////////////////////////////////////////////////////////////
         if (this.flag==true) {

@@ -16,11 +16,11 @@ this.z = z;
     this.obj.setAttribute("rotation",{x:this.x,y:this.y,z:this.z});
       }
 
-      start(){
+      stop(){
         this.obj.setAttribute("visible","false");
       }
 
-      stop(){
+      start(){
         this.obj.setAttribute("visible","true");
       }
 

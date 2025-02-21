@@ -30,6 +30,12 @@ function display(){
       for (let enemyhealth of enemyhealths) {
         enemyhealth.returnhealth(); 
         }
+        for (let sky of skys){
+          sky.start();
+        }
+        for(let startcamera of startcameras){
+          startcamera.returncamera();
+        }
 note1s.length = 0;
 note2s.length = 0;
 note3s.length = 0;
@@ -176,7 +182,9 @@ function hit(){
       this.dz = dz;
       this.x = x;
       this.z = z;
-  
+  this.rx = x;
+  this.rz = z;
+  this.ry = y;
       this.obj = document.createElement("a-camera");
       this.obj.setAttribute("position", { x: x, y:y, z: z });
       this.obj.setAttribute("look-controls", "enabled", "false");
@@ -192,6 +200,12 @@ function hit(){
         this.obj.setAttribute("position", { x: this.x, y: this.y, z: this.z });
         this.obj.setAttribute("active", "true");
       
+    }
+
+    returncamera(){
+      this.x = this.rx;
+      this.z = this.rz;
+      this.obj.setAttribute("position", { x: this.rx, y:this.ry, z: this.rz });
     }
   
   }

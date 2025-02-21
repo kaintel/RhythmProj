@@ -14,7 +14,7 @@
   </head>
 
     <body >
-      <a-scene id="scene" physics="debug: false; gravity: 0 0 0">
+      <a-scene id="scene" physics="debug: false; gravity: 0 0 0" stats >
         <a-assets>
  
           <!-- <audio id="music1" src="sounds/ninelives.mp3" preload="auto"></audio> -->
@@ -22,6 +22,7 @@
            <a-assets-item id="floorTexture" src="images/floor.jpg"></a-assets-item>
           <a-assets-item id="sky2" src="images/fan.jpeg"></a-assets-item>
           <a-assets-item id="sky" src="need_some_space/scene.gltf"></a-assets-item>
+          <a-assets-item id="sky3" src="shipsky.png"></a-assets-item>
           <!-- <a-assets-item id="wall" src="modular_dungeon_kit/onewall.glb"></a-assets-item> -->
 
           <a-assets-item id="mino" src="minotaur_low-poly/scene.gltf"></a-assets-item>
@@ -87,6 +88,7 @@
 
         <a-gltf-model id="startscreen" visible="false" src="#sky" position="-15 -1400 0" scale="1000 1000 1000"></a-gltf-model>
         <a-sky id ="blacksky"scale ="10 10 10" color="black" visible="false"></a-sky>
+      
         <a-plane position="0 0 0" rotation="-90 0 0" width="50" height="50" color="gray" material="src: #floorTexture;repeat: 30 30" static-body></a-plane>
       <!-- MainCamera -->
         <a-camera wasd-controls="acceleration:100" active id="mainCamera" position="7 2 -5" kinema-body="radius: 0.8">
@@ -97,8 +99,9 @@
         </a-camera>
 
      <!-- Enemy Camera -->
-        <a-camera active="false" rotation="0 270 0"  look-controls="enabled: false" sound="src: #music1;loop:false;volume:2;" id="cylinderCamera" position="-25 6 0" wasd-controls-enabled="false">
+        <a-camera active="false" rotation="0 0 0"  look-controls="enabled: false" sound="src: #music1;loop:false;volume:2;" id="cylinderCamera" position="145 0 0" wasd-controls-enabled="false">
           <a-cursor raycaster="objects: [interact]" id="cylinderCursor">
+            <a-image scale="4 2 2" src="shipsky.png" position="0 0 -0.01"></a-image>
             <a-text id="output" value="score" scale="0.2 0.2 0.2" position="-1.7 0.7 0"></a-text>
             <a-text id="output" value="combo" scale="0.2 0.2 0.2" position="-1.5 -0.6 0"></a-text>
           </a-cursor>
