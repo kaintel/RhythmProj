@@ -8,26 +8,37 @@ function display(){
     cylinderCamera.setAttribute("active", false);
     score = 0;
     combo = 0;
+    miss = 0;
     for (let note1 of note1s) {
-      note1.y += 4;
+      note1.obj.setAttribute("opacity", 0);
     }
     for (let note2 of note2s) {
-      note2.y += 4;
+      note2.obj.setAttribute("opacity", 0);
     }
     for (let note3 of note3s) {
-      note3.y += 4;
+      note3.obj.setAttribute("opacity", 0);
     }
     for (let note4 of note4s) {
-      note4.y += 4;
+      note4.obj.setAttribute("opacity", 0);
     }
-    this.flag = false;
-    miss = 0;
+    for (let scorenote of scorenotes) {
+      scorenote.obj.setAttribute("opacity", 0);
+    }
     for (let yourhealth of yourhealths) {
-    yourhealth.returnhealth();
-    }
-    for (let enemyhealth of enemyhealths) {
-      enemyhealth.returnhealth();
+      yourhealth.returnhealth();
       }
+      for (let enemyhealth of enemyhealths) {
+        enemyhealth.returnhealth(); 
+        }
+note1s.length = 0;
+note2s.length = 0;
+note3s.length = 0;
+note4s.length = 0;
+scorenotes.length = 0;
+this.flag = false;
+this.flag2 = false;
+this.flag3 = false; 
+
   }
 
   function play(){
@@ -74,25 +85,25 @@ function display(){
 
 
   class build{
-    constructor(n,sn,c){
+    constructor(n,sn,c,dy){
       for (let y = 2; y < 20; y += rnd(0.2, 2)) {
         let x = -0.3;
-        note1s.push(new n(x, y, 0, c));
+        note1s.push(new n(x, y, 0, c, dy));
       }
     
       for (let y = 2; y < 20; y += rnd(0.2, 2)) {
         let x = -0.1;
-        note2s.push(new n(x, y, 0, c));
+        note2s.push(new n(x, y, 0, c, dy));
       }
     
       for (let y = 2; y < 20; y += rnd(0.2, 2)) {
         let x = 0.1;
-        note3s.push(new n(x, y, 0, c));
+        note3s.push(new n(x, y, 0, c, dy));
       }
     
       for (let y = 2; y < 20; y += rnd(0.2, 2)) {
         let x = 0.3;
-        note4s.push(new n(x, y, 0, c));
+        note4s.push(new n(x, y, 0, c, dy));
       }
     // scorenote
       for (let x = -0.3; x < 0.4; x += 0.2) {

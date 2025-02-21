@@ -1,0 +1,11 @@
+Model Information:
+* title:	Plague Doctor
+* source:	https://sketchfab.com/3d-models/plague-doctor-3d8781fd06dd42529a56d0039260760f
+* author:	Tarik Takasu (https://sketchfab.com/tarik_takasu)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Plague Doctor" (https://sketchfab.com/3d-models/plague-doctor-3d8781fd06dd42529a56d0039260760f) by Tarik Takasu (https://sketchfab.com/tarik_takasu) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
