@@ -94,16 +94,29 @@
         <a-camera wasd-controls="acceleration:100" active id="mainCamera" position="7 2 -5" kinema-body="radius: 0.8">
           <a-image id="Slain" scale="0.04 0.02 0.01" src="images/enemy_slain.png" opacity="0" position="0 0 -0.01"></a-image>
           <a-image id="Died" scale="0.04 0.02 0.01" src="images/died.png" opacity="0" position="0 0 -0.01"></a-image>
+
+          
           <a-cursor id="mainCursor" raycaster="objects: [interact]">
+            
           </a-cursor>
         </a-camera>
 
      <!-- Enemy Camera -->
-        <a-camera active="false" rotation="0 0 0"  look-controls="enabled: false" sound="src: #music1;loop:false;volume:2;" id="cylinderCamera" position="145 0 0" wasd-controls-enabled="false">
+        <a-camera active="false" rotation="0 0 0"  look-controls="enabled: false" sound="src: #music1;loop:false;volume:2;" id="cylinderCamera" position="145 1 0" wasd-controls-enabled="false">
+          <a-image id="Miss" scale="0.02 0.01 0.005" src="images/Miss.png" opacity="0" position="0 0 -0.01"></a-image>
           <a-cursor raycaster="objects: [interact]" id="cylinderCursor">
-            <a-image scale="4 2 2" src="shipsky.png" position="0 0 -0.01"></a-image>
-            <a-text id="output" value="score" scale="0.2 0.2 0.2" position="-1.7 0.7 0"></a-text>
-            <a-text id="output" value="combo" scale="0.2 0.2 0.2" position="-1.5 -0.6 0"></a-text>
+<a-circle id="c1" opacity="0" radius="0.12" position="-0.45 -0.5 0" material="color: white"></a-circle>
+<a-circle id="c2" opacity="0" radius="0.12" position="-0.15 -0.5 0" material="color: white"></a-circle>
+<a-circle id="c3" opacity="0" radius="0.12" position="0.15 -0.5 0" material="color: white"></a-circle>
+<a-circle id="c4" opacity="0" radius="0.12" position="0.45 -0.5 0" material="color: white"></a-circle>
+
+
+
+
+            <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt"id="output"  value="score" scale="0.4 0.4 0.4" position="-1.53 0.7 0"></a-text>
+            <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt" value="HP:" color="red" scale="0.3 0.3 0.3" position="0.95 0.78 0"></a-text>
+            <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt"id="output" value="combo" scale="0.4 0.4 0.4" position="-1.5 -0.6 0"></a-text>
+            <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt"id="minotaurtext" color="#4a2b10"value="Minotaur" scale="0.3 0.3 0.3" position="-0.15 0.7 0"></a-text>
           </a-cursor>
         </a-camera>
 

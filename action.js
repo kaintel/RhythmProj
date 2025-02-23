@@ -11,7 +11,7 @@ window.onload = function () {
   cylinderCursor = document.querySelector("cylinderCursor");
   startscreen = document.getElementById("startscreen");
   blacksky = document.getElementById("blacksky");
-  shipsky = document.getElementById("shipsky");
+
   skys.push(new Sky(0,0,0));
   startcameras.push(new Startcamera(0,0,0,10,10,310));
 this.flag=false;
@@ -22,7 +22,7 @@ this.flagc1=false;
 // monsters
     
 yourhealths.push(new yourhealth(1.3,0.7,0,"cylinderCursor"));
-enemyhealths.push(new enemyhealth(0, 0, 0,"cylinderCursor"));
+enemyhealths.push(new enemyhealth(0, 0.6, 0,"cylinderCursor"));
 hit();
 
 minotaurs.push(new Minotaur(0, 0, 0));

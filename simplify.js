@@ -4,6 +4,7 @@ function display(){
   }
   
   function reset(){
+
     mainCamera.setAttribute("active", true);
     cylinderCamera.setAttribute("active", false);
     score = 0;
@@ -36,6 +37,7 @@ function display(){
         for(let startcamera of startcameras){
           startcamera.returncamera();
         }
+
 note1s.length = 0;
 note2s.length = 0;
 note3s.length = 0;
@@ -47,9 +49,17 @@ this.flag3 = false;
 
   }
 
+  function missed(){
+    Miss.setAttribute('opacity', 1);
+    setTimeout(() => {
+      Miss.setAttribute('opacity', 0);
+    },300);
+}
+  
+
   function play(){
     for (let yourhealth of yourhealths) {
-      
+    
     for (let note1 of note1s) {
         note1.move();
         if (note1.y < -0.55) {
@@ -57,6 +67,7 @@ this.flag3 = false;
           yourhealth.damage();
           document.querySelectorAll('#output')[1].setAttribute('value', `combo: ${combo}`);
           note1s.splice(note1s.indexOf(note1), 1);
+missed();
         }
       }
       for (let note2 of note2s) {
@@ -66,6 +77,7 @@ this.flag3 = false;
           yourhealth.damage();
           document.querySelectorAll('#output')[1].setAttribute('value', `combo: ${combo}`);
           note2s.splice(note2s.indexOf(note2), 1);
+          missed();
         }
       }
       for (let note3 of note3s) {
@@ -75,6 +87,7 @@ this.flag3 = false;
           yourhealth.damage();
           document.querySelectorAll('#output')[1].setAttribute('value', `combo: ${combo}`);
           note3s.splice(note3s.indexOf(note3), 1);
+          missed();
         }
       }
       for (let note4 of note4s) {
@@ -84,6 +97,7 @@ this.flag3 = false;
           yourhealth.damage();
           document.querySelectorAll('#output')[1].setAttribute('value', `combo: ${combo}`);
           note4s.splice(note4s.indexOf(note4), 1);
+          missed();
         }
       }
     }
@@ -93,26 +107,26 @@ this.flag3 = false;
   class build{
     constructor(n,sn,c,dy){
       for (let y = 2; y < 20; y += rnd(0.2, 2)) {
-        let x = -0.3;
+        let x = -0.45;
         note1s.push(new n(x, y, 0, c, dy));
       }
     
       for (let y = 2; y < 20; y += rnd(0.2, 2)) {
-        let x = -0.1;
+        let x = -0.15;
         note2s.push(new n(x, y, 0, c, dy));
       }
     
       for (let y = 2; y < 20; y += rnd(0.2, 2)) {
-        let x = 0.1;
+        let x = 0.15;
         note3s.push(new n(x, y, 0, c, dy));
       }
     
       for (let y = 2; y < 20; y += rnd(0.2, 2)) {
-        let x = 0.3;
+        let x = 0.45;
         note4s.push(new n(x, y, 0, c, dy));
       }
     // scorenote
-      for (let x = -0.3; x < 0.4; x += 0.2) {
+      for (let x = -0.45; x < 0.45; x += 0.3) {
         let y = -0.5;
         scorenotes.push(new sn(x, y, 0, c));
       }
@@ -129,6 +143,10 @@ function hit(){
           note1s.splice(note1s.indexOf(note1), 1);
           enemyhealth.damage();
           display();
+          c1.setAttribute('opacity', 1);
+          setTimeout(() => {
+            c1.setAttribute('opacity', 0);
+          },100)
         }
       }
     })
@@ -142,6 +160,10 @@ function hit(){
           note2s.splice(note2s.indexOf(note2), 1);
           enemyhealth.damage();
           display();
+          c2.setAttribute('opacity', 1);
+          setTimeout(() => {
+            c2.setAttribute('opacity', 0);
+          },100)
         }
       }
     })
@@ -154,6 +176,10 @@ function hit(){
           note3s.splice(note3s.indexOf(note3), 1);
           enemyhealth.damage();
           display();
+          c3.setAttribute('opacity', 1);
+          setTimeout(() => {
+            c3.setAttribute('opacity', 0);
+          },100)
         }
       }
     })
@@ -166,6 +192,10 @@ function hit(){
           note4s.splice(note4s.indexOf(note4), 1);
           enemyhealth.damage();
           display();
+          c4.setAttribute('opacity', 1);
+          setTimeout(() => {
+            c4.setAttribute('opacity', 0);
+          },100)
         }
       }
     })
