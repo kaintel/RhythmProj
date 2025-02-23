@@ -17,7 +17,7 @@ this.z = z;
       }
 
       stop(){
-        this.obj.setAttribute("visible","false");
+        this.obj.setAttribute("visible","true");
       }
 
       start(){
