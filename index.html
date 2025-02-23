@@ -17,7 +17,7 @@
       <a-scene id="scene" physics="debug: false; gravity: 0 0 0" stats >
         <a-assets>
  
-          <!-- <audio id="music1" src="sounds/ninelives.mp3" preload="auto"></audio> -->
+          <!-- <audio id="music1" src="sounds/ninelives.mp3" preload="false"></audio> -->
 
            <a-assets-item id="floorTexture" src="images/floor.jpg"></a-assets-item>
           <a-assets-item id="sky2" src="images/fan.jpeg"></a-assets-item>
@@ -57,9 +57,9 @@
         <a-gltf-model id="startscreen" visible="false" src="#sky" position="-15 -1400 0" scale="1000 1000 1000"></a-gltf-model>
         <a-sky id ="blacksky"scale ="10 10 10" color="black" visible="false"></a-sky>
       
-        <a-plane position="0 0 0" rotation="-90 0 0" width="50" height="50" color="gray" material="src: #floorTexture;repeat: 30 30" static-body></a-plane>
+        <a-plane position="0 0 -75" rotation="-90 0 0" width="200" height="200" color="gray" material="src: #floorTexture;repeat: 120 120" static-body></a-plane>
       <!-- MainCamera -->
-        <a-camera wasd-controls="acceleration:100" active id="mainCamera" position="7 2 -5" kinema-body="radius: 0.8">
+        <a-camera wasd-controls="acceleration:100" active id="mainCamera" position="0 2 0" kinema-body="radius: 0.8">
           <a-image id="Slain" scale="0.04 0.02 0.01" src="images/enemy_slain.png" opacity="0" position="0 0 -0.01"></a-image>
           <a-image id="Died" scale="0.04 0.02 0.01" src="images/died.png" opacity="0" position="0 0 -0.01"></a-image>
 
@@ -70,7 +70,7 @@
         </a-camera>
 
      <!-- Enemy Camera -->
-        <a-camera active="false" rotation="0 0 0"  look-controls="enabled: false" sound="src: #music1;loop:false;volume:2;" id="cylinderCamera" position="145 1 0" wasd-controls-enabled="false">
+        <a-camera active="false" rotation="0 0 0"  look-controls="enabled: false" id="cylinderCamera" position="145 1 0" wasd-controls-enabled="false">
           <a-image id="Miss" scale="0.02 0.01 0.005" src="images/Miss.png" opacity="0" position="0 0 -0.01"></a-image>
           <a-cursor raycaster="objects: [interact]" id="cylinderCursor">
 <a-circle id="c1" opacity="0" radius="0.12" position="-0.45 -0.5 0" material="color: white"></a-circle>
@@ -78,13 +78,13 @@
 <a-circle id="c3" opacity="0" radius="0.12" position="0.15 -0.5 0" material="color: white"></a-circle>
 <a-circle id="c4" opacity="0" radius="0.12" position="0.45 -0.5 0" material="color: white"></a-circle>
 
-
-
-
             <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt"id="output"  value="score" scale="0.4 0.4 0.4" position="-1.53 0.7 0"></a-text>
             <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt" value="HP:" color="red" scale="0.3 0.3 0.3" position="0.95 0.78 0"></a-text>
             <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt"id="output" value="combo" scale="0.4 0.4 0.4" position="-1.5 -0.6 0"></a-text>
-            <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt"id="minotaurtext" color="#4a2b10"value="Minotaur" scale="0.3 0.3 0.3" position="-0.15 0.7 0"></a-text>
+            <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt"id="minotaurtext" opacity="0" color="#4a2b10"value="Minotaur" scale="0.3 0.3 0.3" position="-0.15 0.7 0"></a-text>
+            <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt"id="runnertext" opacity="0" color="#4a2b10"value="Runner" scale="0.3 0.3 0.3" position="-0.15 0.7 0"></a-text>
+            <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt"id="doctortext" opacity="0" color="#4a2b10"value="Doctor" scale="0.3 0.3 0.3" position="-0.15 0.7 0"></a-text>
+
           </a-cursor>
         </a-camera>
 

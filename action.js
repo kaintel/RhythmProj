@@ -1,3 +1,9 @@
+let gameState = {
+  minotaurDead: false,
+  monster2Dead: false,
+  doctorDead: false
+};
+
 let rnd = (l, u) => Math.random() * (u - l) + l
 let scene, camera, note1s = [], note2s = [], note3s = [], note4s = [],
    minotaurs = [],monster2s = [], scorenotes = [], score = 0, combo = 0, miss = 0,
@@ -25,176 +31,101 @@ yourhealths.push(new yourhealth(1.3,0.7,0,"cylinderCursor"));
 enemyhealths.push(new enemyhealth(0, 0.6, 0,"cylinderCursor"));
 hit();
 
-minotaurs.push(new Minotaur(0, 0, 0));
-monster2s.push(new Monster2(1, 0, 15));
-doctors.push(new Doctor(-5, 0, 10));
-
+minotaurs.push(new Minotaur(0, 0, -20));
+monster2s.push(new Monster2(0, 0, -50));
+doctors.push(new Doctor(0, 0, -80));
 
 }
 
 
 loop();
 function loop() {
-  let enemySlain = document.querySelector('#slain');
-  let die = document.querySelector('#Died');
-
+  
 for (let sky of skys){
   sky.rotate();
 }
-
-  for (let minotaur of minotaurs) {
-    let d = distance(mainCamera, minotaur.obj);
-    minotaur.idle();
-
-    if (d < 2.1) {
-      mainCamera.setAttribute("position", { x: 7, y: 2, z: 1 });
-      mainCamera.setAttribute("active", "false");
-      this.flagc1=true;
-      
-      blacksky.setAttribute("visible", "true");
-      startscreen.setAttribute("visible", "true");
-      for (let sky of skys){
-        sky.stop();
-      }
-
-
-      setTimeout(() => {
-        new build(Note, Scorenote, "cylinderCursor", 0.005);
-        this.flag = true;
-        this.flagc1=false;
-        blacksky.setAttribute("visible", "false");
-        startscreen.setAttribute("visible", "false");
-              }, 2000);
-
-    }
-
-    if (this.flagc1==true) {
-      for(let startcamera of startcameras){        
-        startcamera.move();      
-    }
-    
-  }
-/////////////////////////////////////////////////////////////////////////////
-        if (this.flag==true) {
-
-          cylinderCamera.components.sound.playSound();
-          cylinderCamera.setAttribute("active", true);
-          mainCamera.setAttribute("active", false);
-    
-          if (score >= 10000) {
-            reset();
-            minotaur.dead();
-            enemySlain.setAttribute('opacity', 1);
-            display();
-            setTimeout(() => {
-              enemySlain.setAttribute('opacity', 0);
-            }, 2000);  
-          }
-
-          if (miss >= 10){
-            reset();
-            die.setAttribute('opacity', 1);
-            display();
-            setTimeout(() => {
-              die.setAttribute('opacity', 0);
-            }, 2000);  
-          }
-
-      setTimeout(() => {
-
-play();
-
-      }, 1000);//time before notes start falling//
-
-    }
-  }
-
-
-  for (let monster2 of monster2s) {
-    let d = distance(mainCamera, monster2.obj);
-    if (d < 2.1) {
-      new build(Note, Scorenote, "cylinderCursor", 0.007);
-      this.flag2 = true;
-      mainCamera.setAttribute("position", { x: 10, y: 1.5, z: -5 });
-    }
-        if (this.flag2==true) {
-          cylinderCamera.components.sound.playSound();
-          cylinderCamera.setAttribute("active", true);
-          mainCamera.setAttribute("active", false);
-    
-          if (score >= 10000) {
-            reset();
-            monster2.dead();
-            enemySlain.setAttribute('opacity', 1);
-            display();
-            setTimeout(() => {
-              enemySlain.setAttribute('opacity', 0);
-            }, 2000);  
-          }
-
-          if (miss >= 10){
-            reset();
-            die.setAttribute('opacity', 1);
-            display();
-            setTimeout(() => {
-              die.setAttribute('opacity', 0);
-            }, 2000);  
-          }
-
-      setTimeout(() => {
-
-play();
-
-      }, 1000);//time before notes start falling//
-
-    }
-  }
-
-
-
-  for (let doctor of doctors) {
-    let d = distance(mainCamera, doctor.obj);
-    if (d < 2.1) {
-      new build(Note, Scorenote, "cylinderCursor", 0.009);
-      this.flag3 = true;
-      mainCamera.setAttribute("position", { x: 10, y: 1.5, z: -5 });
-    }
-        if (this.flag3==true) {
-          cylinderCamera.components.sound.playSound();
-          cylinderCamera.setAttribute("active", true);
-          mainCamera.setAttribute("active", false);
-    
-          if (score >= 10000) {
-            reset();
-            doctor.dead();
-            enemySlain.setAttribute('opacity', 1);
-            display();
-            setTimeout(() => {
-              enemySlain.setAttribute('opacity', 0);
-            }, 2000);  
-          }
-
-          if (miss >= 10){
-            reset();
-            die.setAttribute('opacity', 1);
-            display();
-            setTimeout(() => {
-              die.setAttribute('opacity', 0);
-            }, 2000);  
-          }
-
-      setTimeout(() => {
-
-play();
-
-      }, 1000);//time before notes start falling//
-
-    }
-  }
-
-
+handleMonster(minotaurs, 2.1, 10000, 10, 2000, 2000, 1000, 'minotaurDead', 5, `#minotaurtext`,"src: url(sounds/ninelives.mp3);loop:false;volume:2;");
+if (gameState.minotaurDead) {
+  handleMonster(monster2s, 2.1, 10000, 10, 2000, 2000, 1000, 'monster2Dead', 7, `#runnertext`,"src: url(sounds/ninelives.mp3);loop:false;volume:2;");
+} 
+if (gameState.monster2Dead) {
+   handleMonster(doctors, 2.1, 10000, 10, 2000, 2000, 1000, 'doctorDead', 9, `#doctortext`,"src: url(sounds/ninelives.mp3);loop:false;volume:2;");;
+} 
   window.requestAnimationFrame(loop);
 
+}
+
+
+function handleMonster(monsters, distanceThreshold, scoreThreshold, missThreshold, 
+  delayBeforeBuild, delayAfterOutcome, delayBeforePlay, monsterDead, speed, monstertitle, song) {
+  let enemySlain = document.querySelector('#slain');
+  let die = document.querySelector('#Died');
+let title = document.querySelector(monstertitle);
+  for (let monster of monsters) {
+      let d = distance(mainCamera, monster.obj);
+
+      if (d < distanceThreshold ) {
+          // Trigger the monster encounter
+          cylinderCamera.setAttribute("sound", song);
+          mainCamera.setAttribute("position", { x: 0, y: 2, z: 0 });
+          mainCamera.setAttribute("active", "false");
+          this.flagc1 = true;
+         title.setAttribute("opacity", 1);
+          blacksky.setAttribute("visible", "true");
+          startscreen.setAttribute("visible", "true");
+          for (let sky of skys) {
+              sky.stop();
+          }
+
+          setTimeout(() => {
+              new build(Note, Scorenote, "cylinderCursor", speed/1000);
+              this.flag = true;
+              this.flagc1 = false;
+              blacksky.setAttribute("visible", "false");
+              startscreen.setAttribute("visible", "false");
+          }, delayBeforeBuild);
+      }
+
+      if (this.flagc1) {
+          for (let startcamera of startcameras) {
+              startcamera.move();
+          }
+      }
+
+      if (this.flag) {
+          cylinderCamera.components.sound.playSound();
+          cylinderCamera.setAttribute("active", true);
+          mainCamera.setAttribute("active", false);
+
+          // Check for win condition
+          if (score >= scoreThreshold) {
+              reset();
+              monster.dead();
+              title.setAttribute("opacity", 0);
+              enemySlain.setAttribute('opacity', 1);
+              gameState[monsterDead] = true;
+              display();
+              setTimeout(() => {
+                  enemySlain.setAttribute('opacity', 0);
+              }, delayAfterOutcome);
+          }
+
+          // Check for lose condition
+          if (miss >= missThreshold) {
+              reset();
+              die.setAttribute('opacity', 1);
+              title.setAttribute("opacity", 0);
+              display();
+              setTimeout(() => {
+                  die.setAttribute('opacity', 0);
+              }, delayAfterOutcome);
+          }
+
+          setTimeout(() => {
+              play();
+          }, delayBeforePlay); // Time before notes start falling
+      }
+  }
 }
 
 function distance(obj1, obj2) {
