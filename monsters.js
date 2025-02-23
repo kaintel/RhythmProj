@@ -13,7 +13,8 @@ class Minotaur{
     this.obj.setAttribute("animation-mixer",{timeScale: 4});
       }
       dead(){
-this.obj.parentNode.removeChild(this.obj);
+this.obj.setAttribute("visible","false");
+minotaurs.length = 0;
       }
 }
 
@@ -31,7 +32,9 @@ class Monster2{
         this.obj.setAttribute("animation-mixer",{timeScale: 2});
           }
           dead(){
-            this.obj.parentNode.removeChild(this.obj);
+            this.obj.setAttribute("visible","false");
+            monster2s.length = 0;
+            
           }
 }
 
@@ -48,6 +51,7 @@ class Doctor{
       this.obj.setAttribute("animation-mixer",{timeScale: 2});
         }
         dead(){
-          this.obj.parentNode.removeChild(this.obj);
+          this.obj.setAttribute("visible","false");
+          doctors.length = 0;
         }
 }

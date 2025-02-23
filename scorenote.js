@@ -8,7 +8,7 @@ class Scorenote{
       this.obj.setAttribute("color","red");
       this.obj.setAttribute("position",{x:this.x, y:y, z:z});
 
-      cursor = document.getElementById("cylinderCursor");
+     cursor = document.getElementById("cylinderCursor");
       cursor.append(this.obj);
     }
 
