@@ -14,7 +14,7 @@
   </head>
 
     <body >
-      <a-scene id="scene" physics="debug: false; gravity: 0 0 0" stats >
+      <a-scene id="scene" physics="debug: false; gravity: 0 0 0" >
         <a-assets>
  
           <!-- <audio id="music1" src="sounds/ninelives.mp3" preload="false"></audio> -->
@@ -23,7 +23,7 @@
           <a-assets-item id="sky2" src="images/fan.jpeg"></a-assets-item>
           <a-assets-item id="sky" src="need_some_space/scene.gltf"></a-assets-item>
           <a-assets-item id="sky3" src="shipsky.png"></a-assets-item>
-          <a-assets-item id="wall" src="modular_dungeon_kit/onewall.glb"></a-assets-item>
+          <!-- <a-assets-item id="wall" src="modular_dungeon_kit/onewall.glb"></a-assets-item> -->
 
           <a-assets-item id="mino" src="minotaur_low-poly/scene.gltf"></a-assets-item>
           <a-assets-item id="monster2" src="monsters_01/scene.gltf"></a-assets-item>
@@ -53,6 +53,9 @@
 
         </a-entity>
 
+        <a-box id="box1" position="0 1.5 -55" scale="20 0.5 0.5"color="red"></a-box>
+<a-box id="box2" position="0 1.5 -25" scale="20 0.5 0.5"color="green"></a-box>
+<a-box id="box3" position="0 1.5 -10" scale="20 0.5 0.5" color="blue"></a-box>
 
         <a-gltf-model id="startscreen" visible="false" src="#sky" position="-15 -1400 0" scale="1000 1000 1000"></a-gltf-model>
         <a-sky id ="blacksky"scale ="10 10 10" color="black" visible="false"></a-sky>
@@ -79,12 +82,14 @@
 <a-circle id="c4" opacity="0" radius="0.12" position="0.45 -0.5 0" material="color: white"></a-circle>
 
             <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt"id="output"  value="score" scale="0.4 0.4 0.4" position="-1.53 0.7 0"></a-text>
-            <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt" value="HP:" color="red" scale="0.3 0.3 0.3" position="0.95 0.78 0"></a-text>
             <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt"id="output" value="combo" scale="0.4 0.4 0.4" position="-1.5 -0.6 0"></a-text>
+            <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt"id="output" color="red" scale="0.19 0.19 0.19" position="-0.12 0.60 0"></a-text>
+            <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt"value="HP:" color="red" scale="0.3 0.3 0.3" position="0.95 0.78 0"></a-text>
             <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt"id="minotaurtext" opacity="0" color="#4a2b10"value="Minotaur" scale="0.3 0.3 0.3" position="-0.15 0.7 0"></a-text>
             <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt"id="runnertext" opacity="0" color="#4a2b10"value="Runner" scale="0.3 0.3 0.3" position="-0.15 0.7 0"></a-text>
             <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt"id="doctortext" opacity="0" color="#4a2b10"value="Doctor" scale="0.3 0.3 0.3" position="-0.15 0.7 0"></a-text>
-
+          
+  
           </a-cursor>
         </a-camera>
 

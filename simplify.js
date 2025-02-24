@@ -1,15 +1,26 @@
 function display(){
     document.querySelectorAll('#output')[0].setAttribute('value', `score: ${Math.round(score)}`);
     document.querySelectorAll('#output')[1].setAttribute('value', `combo: ${combo}`);
+    document.querySelectorAll('#output')[2].setAttribute('value', `hp: ${remainhealth}/${resetenemyhealth}`);
   }
   
   function reset(){
+    setTimeout(() => {
+      mainCamera.setAttribute("active", true);
+      cylinderCamera.setAttribute("active", false);
+      score = 0;
+      combo = 0;
+      miss = 0;
+      remainhealth = resetenemyhealth;
+      for (let yourhealth of yourhealths) {
+        yourhealth.returnhealth();
+        }
+        for (let enemyhealth of enemyhealths) {
+          enemyhealth.returnhealth(); 
+          }
+    },2000);
 
-    mainCamera.setAttribute("active", true);
-    cylinderCamera.setAttribute("active", false);
-    score = 0;
-    combo = 0;
-    miss = 0;
+
     for (let note1 of note1s) {
       note1.obj.setAttribute("opacity", 0);
     }
@@ -25,12 +36,6 @@ function display(){
     for (let scorenote of scorenotes) {
       scorenote.obj.setAttribute("opacity", 0);
     }
-    for (let yourhealth of yourhealths) {
-      yourhealth.returnhealth();
-      }
-      for (let enemyhealth of enemyhealths) {
-        enemyhealth.returnhealth(); 
-        }
         for (let sky of skys){
           sky.start();
         }
@@ -46,6 +51,7 @@ scorenotes.length = 0;
 this.flag = false;
 this.flag2 = false;
 this.flag3 = false; 
+display();
 
   }
 
@@ -239,3 +245,4 @@ function hit(){
     }
   
   }
+
