@@ -23,7 +23,7 @@
           <a-assets-item id="sky2" src="images/fan.jpeg"></a-assets-item>
           <a-assets-item id="sky" src="need_some_space/scene.gltf"></a-assets-item>
           <a-assets-item id="sky3" src="shipsky.png"></a-assets-item>
-          <!-- <a-assets-item id="wall" src="modular_dungeon_kit/onewall.glb"></a-assets-item> -->
+          <a-assets-item id="wall" src="modular_dungeon_kit/onewall.glb"></a-assets-item>
 
           <a-assets-item id="mino" src="minotaur_low-poly/scene.gltf"></a-assets-item>
           <a-assets-item id="monster2" src="monsters_01/scene.gltf"></a-assets-item>
@@ -32,25 +32,33 @@
        
 
         <a-entity id="mainRoom">
+          <a-gltf-model src="#wall" rotation="0 360 0" scale="5 10 10" position="10 0 -5"></a-gltf-model>
+          <a-box id="wall" depth="25" width="0.75" height="5" position="10 0 -5" opacity="0 0 0"></a-box>
+          <a-gltf-model src="#wall" rotation="0 360 0" scale="5 10 10" position="10 0 -25"></a-gltf-model>
+          <a-box id="wall" depth="25" width="0.75" height="5" position="10 0 -25" opacity="0 0 0"></a-box>
+          <a-gltf-model src="#wall" rotation="0 360 0" scale="5 10 10" position="10 0 -45"></a-gltf-model>
+          <a-box id="wall" depth="25" width="0.75" height="5" position="10 0 -45" opacity="0 0 0"></a-box>
+          <a-gltf-model src="#wall" rotation="0 360 0" scale="5 10 10" position="10 0 -65"></a-gltf-model>
+          <a-box id="wall" depth="25" width="0.75" height="5" position="10 0 -65" opacity="0 0 0"></a-box>
+          <a-gltf-model src="#wall" rotation="0 360 0" scale="5 10 10" position="10 0 -85"></a-gltf-model>
+          <a-box id="wall" depth="25" width="0.75" height="5" position="10 0 -85" opacity="0 0 0"></a-box>
 
-      <!-- back -->
-          <a-gltf-model src="#wall" rotation="0 180 0" scale="5 5 5" position="10 0 -5"></a-gltf-model>
-          <a-box id="wall" depth="12" width="0.75" height="5" position="10 0 -5"opacity="0 0 0" ></a-box>
+          <a-gltf-model src="#wall" rotation="0 360 0" scale="5 10 10" position="-10 0 -5"></a-gltf-model>
+          <a-box id="wall" depth="25" width="0.75" height="5" position="-10 0 -5" opacity="0 0 0"></a-box>
+          <a-gltf-model src="#wall" rotation="0 360 0" scale="5 10 10" position="-10 0 -25"></a-gltf-model>
+          <a-box id="wall" depth="25" width="0.75" height="5" position="-10 0 -25" opacity="0 0 0"></a-box>
+          <a-gltf-model src="#wall" rotation="0 360 0" scale="5 10 10" position="-10 0 -45"></a-gltf-model>
+          <a-box id="wall" depth="25" width="0.75" height="5" position="-10 0 -45" opacity="0 0 0"></a-box>
+          <a-gltf-model src="#wall" rotation="0 360 0" scale="5 10 10" position="-10 0 -65"></a-gltf-model>
+          <a-box id="wall" depth="25" width="0.75" height="5" position="-10 0 -65" opacity="0 0 0"></a-box>
+          <a-gltf-model src="#wall" rotation="0 360 0" scale="5 10 10" position="-10 0 -85"></a-gltf-model>
+          <a-box id="wall" depth="25" width="0.75" height="5" position="-10 0 -85" opacity="0 0 0"></a-box>
 
-      <!-- left -->
-          <a-gltf-model src="#wall" rotation="0 90 0" scale="5 5 5" position="5 0 -10"></a-gltf-model>
-          <a-gltf-model src="#wall" rotation="0 90 0" scale="5 5 5" position="-7 0 -10"></a-gltf-model>
-          <a-gltf-model src="#wall" rotation="0 90 0" scale="5 5 5" position="-19 0 -10"></a-gltf-model>
-          <a-box id="wall" depth="0.7" height="5" width="40" position="-5 0 -10" opacity="0 0 0" ></a-box>
+          <a-gltf-model src="#wall" rotation="0 90 0" scale="5 10 10" position="0 0 5"></a-gltf-model>
+          <a-box id="wall" depth="1" width="20" height="5" position="0 0 5" opacity="0 0 0"></a-box>
 
-      <!-- right -->
-          <a-gltf-model src="#wall" rotation="0 -90 0" scale="5 5 5" position="5 0 0"></a-gltf-model>
-          <a-gltf-model src="#wall" rotation="0 -90 0" scale="5 5 5" position="-7 0 0"></a-gltf-model>
-          <a-gltf-model src="#wall" rotation="0 -90 0" scale="5 5 5" position="-19 0 0"></a-gltf-model>
-          <a-gltf-model src="#wall" rotation="0 -180 0" scale="5 5 5" position="-20 0 -5"></a-gltf-model>
-          <a-box id="wall" depth="0.7" height="5" width="40" position="-5 0 0"  opacity="0 0 0"></a-box>
-          <a-box id="wall" depth="10" height="5" width="1" position="-20 0 -5"  opacity="0 0 0"></a-box>
-
+          <a-gltf-model src="#wall" rotation="0 90 0" scale="5 10 10" position="0 0 -95"></a-gltf-model>
+          <a-box id="wall" depth="1" width="20" height="5" position="0 0 -95" opacity="0 0 0"></a-box>
         </a-entity>
 
         <a-box id="box1" position="0 1.5 -55" scale="20 0.5 0.5"color="red"></a-box>
