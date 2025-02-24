@@ -14,7 +14,7 @@
   </head>
 
     <body >
-      <a-scene id="scene" physics="debug: false; gravity: 0 0 0" >
+      <a-scene id="scene" physics="debug: false; gravity: 0 0 0">
         <a-assets>
  
           <!-- <audio id="music1" src="sounds/ninelives.mp3" preload="false"></audio> -->
@@ -60,7 +60,7 @@
         <a-gltf-model id="startscreen" visible="false" src="#sky" position="-15 -1400 0" scale="1000 1000 1000"></a-gltf-model>
         <a-sky id ="blacksky"scale ="10 10 10" color="black" visible="false"></a-sky>
       
-        <a-plane position="0 0 -75" rotation="-90 0 0" width="200" height="200" color="gray" material="src: #floorTexture;repeat: 120 120" static-body></a-plane>
+        <a-plane id="plane" position="0 0 -75" rotation="-90 0 0" width="200" height="200" color="gray" material="src: #floorTexture;repeat: 120 120" static-body></a-plane>
       <!-- MainCamera -->
         <a-camera wasd-controls="acceleration:100" active id="mainCamera" position="0 2 0" kinema-body="radius: 0.8">
           <a-image id="Slain" scale="0.04 0.02 0.01" src="images/enemy_slain.png" opacity="0" position="0 0 -0.01"></a-image>

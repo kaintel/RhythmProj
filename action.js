@@ -8,7 +8,7 @@ let isInitialized = false;
 
 let rnd = (l, u) => Math.random() * (u - l) + l
 let scene, camera, note1s = [], note2s = [], note3s = [], note4s = [],
-   minotaurs = [],monster2s = [], scorenotes = [], score = 0, combo = 0, miss = 0,
+   minotaurs = [],monster2s = [], scorenotes = [], score = 0, combo = 0, miss = 0, t=20000,
   clouds = [], skys = [], yourhealths = [], enemyhealths = [], doctors = [], startcameras = []; 
 
 window.onload = function () {
@@ -19,7 +19,7 @@ window.onload = function () {
   cylinderCursor = document.querySelector("cylinderCursor");
   startscreen = document.getElementById("startscreen");
   blacksky = document.getElementById("blacksky");
-
+plane = document.getElementById("plane"); 
 
   skys.push(new Sky(0,0,0));
   startcameras.push(new Startcamera(0,0,0,10,10,310));
@@ -27,13 +27,12 @@ this.flag=false;
 this.flag2=false;
 this.flag3=false;
 
-this.flagE1=false;
 
 this.flagc1=false;
 // monsters
-    
-yourhealths.push(new yourhealth(1.3,0.7,0,"cylinderCursor"));
-enemyhealths.push(new enemyhealth(0, 0.6, 0,"cylinderCursor"));
+yourhealths.push(new yourhealth(1.3,0.7,0,"cylinderCursor", 20));
+enemyhealths.push(new enemyhealth(0, 0.6, 0,"cylinderCursor",t));
+
 hit();
 
 minotaurs.push(new Minotaur(0, 0, -20));
@@ -54,23 +53,21 @@ function loop() {
   }
 
 
-
-
-  checkZAxis(-10, minotaurs);
-
 for (let sky of skys){
   sky.rotate();
 
 }
-handleMonster(minotaurs, 2.1, 10000, 10, 2000, 2000, 1000, 'minotaurDead', 5, 
-  `#minotaurtext`,"src: url(sounds/ninelives.mp3);loop:false;volume:2;",-10);
+handleMonster(minotaurs, 2.1, 20000, 20, 2000, 2000, 1000, 'minotaurDead', 5, 
+  `#minotaurtext`,"src: url(sounds/ninelives.mp3);loop:false;volume:2;",-10, "src: url(images/chop.png); transparent: false");
 if (gameState.minotaurDead) {
-  handleMonster(monster2s, 2.1, 15000, 10, 2000, 2000, 1000, 'monster2Dead', 7, 
-    `#runnertext`,"src: url(sounds/ninelives.mp3);loop:false;volume:2;",-25);
+  handleMonster(monster2s, 2.1, 20000, 20, 2000, 2000, 1000, 'monster2Dead', 7, 
+    `#runnertext`,"src: url(sounds/ninelives.mp3);loop:false;volume:2;",-25, "src: url(images/punch.png); transparent: false");
+    
 } 
 if (gameState.monster2Dead) {
-   handleMonster(doctors, 2.1, 10000, 10, 2000, 2000, 1000, 'doctorDead', 9, 
-    `#doctortext`,"src: url(sounds/ninelives.mp3);loop:false;volume:2;",-55);;
+   handleMonster(doctors, 2.1, 20000, 20, 2000, 2000, 1000, 'doctorDead', 9, 
+    `#doctortext`,"src: url(sounds/ninelives.mp3);loop:false;volume:2;",-55, "src: url(images/shot.png); transparent: false");;
+
 } 
   window.requestAnimationFrame(loop);
 
@@ -81,7 +78,6 @@ function checkZAxis(cross, monsters) {
 
   if (cameraZ < cross) {
 for (let monster of monsters) {
-  console.log("success");
   monster.chase(playerPosition);
   monster.attack();
 }
@@ -92,7 +88,7 @@ for (let monster of monsters) {
 
 
 function handleMonster(monsters, distanceThreshold, scoreThreshold, missThreshold, 
-  delayBeforeBuild, delayAfterOutcome, delayBeforePlay, monsterDead, speed, monstertitle, song, cross ) {
+  delayBeforeBuild, delayAfterOutcome, delayBeforePlay, monsterDead, speed, monstertitle, song, cross, img) {
 
   let enemySlain = document.querySelector('#slain');
   let die = document.querySelector('#Died');
@@ -107,24 +103,29 @@ checkZAxis(cross, monsters);
 
       if (d < distanceThreshold ) {
           // Trigger the monster encounter
+          opacityoff();
           display();
           cylinderCamera.setAttribute("sound", song);
-          mainCamera.setAttribute("position", { x: 0, y: 2, z: 0 });
+          mainCamera.setAttribute("position", { x: 0, y: 2, z: cross+10 });
           mainCamera.setAttribute("active", "false");
           this.flagc1 = true;
          title.setAttribute("opacity", 1);
           blacksky.setAttribute("visible", "true");
           startscreen.setAttribute("visible", "true");
+
           for (let sky of skys) {
               sky.stop();
           }
 
           setTimeout(() => {
-              new build(Note, Scorenote, "cylinderCursor", speed/1000);
+              new build(Note, Scorenote, "cylinderCursor", speed/1000, img);
               this.flag = true;
               this.flagc1 = false;
               blacksky.setAttribute("visible", "false");
               startscreen.setAttribute("visible", "false");
+              for (let sky of skys) {
+                sky.start();
+            }
           }, delayBeforeBuild);
       }
 

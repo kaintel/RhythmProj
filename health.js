@@ -1,11 +1,11 @@
 class yourhealth{
-    constructor(x,y,z,c){
+    constructor(x,y,z,c,h){
         this.y = y;
         this.x = x;
         this.rx = x;
         this.z = z;
         this.s=0;
-        this.ds=0.07;
+        this.ds=0.7/h;
       this.obj = document.createElement("a-box");
       this.obj.setAttribute("height",0.07);
       this.obj.setAttribute("width",0.7);
@@ -43,13 +43,14 @@ class yourhealth{
 }
 
 class enemyhealth{
-  constructor(x,y,z,c){
+  constructor(x,y,z,c,t){
       this.y = y;
       this.x = x;
       this.rx = x;
       this.z = z;
       this.s=0;
       this.ds=0.07;
+this.t = t;
     this.obj = document.createElement("a-box");
     this.obj.setAttribute("height",0.05);
     this.obj.setAttribute("width",1.1);
@@ -59,9 +60,9 @@ class enemyhealth{
 
     this.obj2 = document.createElement("a-box");
     this.obj2.setAttribute("height",0.05);
-    this.obj2.setAttribute("width",1);
+    this.obj2.setAttribute("width",1.1);
     this.obj2.setAttribute("depth",0.00001);
-    this.obj2.setAttribute("color","#1f0300");
+    this.obj2.setAttribute("color","white");
     this.obj2.setAttribute("position",{x:x, y:y, z:z});
 
     cursor = document.getElementById(c);
@@ -70,9 +71,9 @@ class enemyhealth{
   }
 
   damage(){
-    this.cs = (combo*100)/10000;
-    this.s+=(this.cs*1);
-    this.obj.setAttribute("width",1-this.s);
+    this.cs = (combo*100)/this.t;
+    this.s+=(this.cs*1.1);
+    this.obj.setAttribute("width",1.1-this.s);
     this.obj.setAttribute("position",{x:this.x, y:this.y, z:this.z});
     
   }
@@ -80,7 +81,7 @@ class enemyhealth{
   returnhealth(){
     this.s = 0;
     this.x = this.rx;
-    this.obj.setAttribute("width",1);
+    this.obj.setAttribute("width",1.1);
     this.obj.setAttribute("position",{x:this.rx, y:this.y, z:this.z});
   }
 }
