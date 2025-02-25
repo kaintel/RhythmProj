@@ -1,158 +1,29 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.5.4/dist/aframe-extras.min.js"></script>
-    <script src="note.js"></script>
-    <script src="action.js"></script>
-    <script src="monsters.js"></script>
-    <script src="scorenote.js"></script>
-    <script src="sky.js"></script>
-     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.min.js"></script>
-     <script src="kinema.js"></script>
-     <script src="simplify.js"></script>
-     <script src="health.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Rhythm Game</title>   <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
-
-    <body >
-      <a-scene id="scene" physics="debug: false; gravity: 0 0 0" environment="preset: dungeon; lighting: none;" stats>
-        <a-assets>
- 
-  
-
-           <a-assets-item id="floorTexture" src="images/floor.jpg"></a-assets-item>
-          <a-assets-item id="sky2" src="images/fan.jpeg"></a-assets-item>
-          <a-assets-item id="sky" src="need_some_space/scene.gltf"></a-assets-item>
-          <a-assets-item id="sky3" src="shipsky.png"></a-assets-item>
-<a-assets-item id="crypt" src="crypt_location/scene.gltf"></a-assets-item>
-<a-assets-item id="redtree" src="redtree/scene.gltf"></a-assets-item>
-<a-assets-item id="knight" src="bulky_knight/scene.gltf"></a-assets-item>
-<a-assets-item id="wall" src="images/waller.jpg"></a-assets-item>
-<a-assets-item id="toonhouse" src="abandoned_house/scene.gltf"></a-assets-item>
-          <a-assets-item id="mino" src="minotaur_low-poly/scene.gltf"></a-assets-item>
-          <a-assets-item id="monster2" src="monsters_01/scene.gltf"></a-assets-item>
-          <a-assets-item id="dragon" src="plague_doctor/scene.gltf"></a-assets-item> 
-        </a-assets>
-       
-<a-gltf-model src="#redtree" position="20 0 -190" scale="0.1 0.1 0.1"></a-gltf-model>
-
-
-<a-gltf-model src="#knight" rotation = "0 315 0" position="16 0 -16" scale="100 100 100"></a-gltf-model>
-<a-box  depth="5" width="5" height="8" position="17 0 -17" opacity="0" static-body></a-box>
-
-
-
-<a-gltf-model src="#crypt" rotation = "0 0 0" position="-35 -5 -16" scale="1.2 1.2 1.2"></a-gltf-model>
-<a-gltf-model src="#crypt" rotation = "0 0 0" position="35 -5 -16" scale="1.2 1.2 1.2"></a-gltf-model>
-<a-gltf-model src="#crypt" rotation = "0 90 0" position="0 -5 18" scale="1.2 1.2 1.2"></a-gltf-model>
-        <a-entity id="mainRoom">
-          <a-box id="wall" depth="1" width="40" height="8" position="0 0 5" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-          <a-box id="wall" depth="25" width="1" height="8" position="20 0 -7" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-          <a-box id="wall" depth="25" width="1" height="8" position="-20 0 -7" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-          <a-box id="wall" depth="1" width="20" height="8" position="15 0 -20" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-          <a-box id="wall" depth="1" width="20" height="8" position="-15 0 -20" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-
-          <a-box  depth="3" width="3" height="0.5" position="-2 0 0" opacity="1" color="#676e6b" material="src: #floorTexture; repeat: 2 2" static-body></a-box>
-          <a-box  depth="3" width="3" height="0.3" position="3 0 -4" opacity="1" color="#676e6b" material="src: #floorTexture; repeat: 2 2" static-body></a-box>
-          <a-box  depth="3" width="3" height="0.5" position="6 0 -9" opacity="1" color="#676e6b" material="src: #floorTexture; repeat: 2 2" static-body></a-box>
-          <a-box  depth="3" width="3" height="0.3" position="5 0 -1" opacity="1" color="#676e6b" material="src: #floorTexture; repeat: 2 2" static-body></a-box>
-          <a-box  depth="3" width="3" height="0.5" position="-14 0 -12" opacity="1" color="#676e6b" material="src: #floorTexture; repeat: 2 2" static-body></a-box>
-          <a-box  depth="3" width="3" height="0.3" position="18 0 -6" opacity="1" color="#676e6b" material="src: #floorTexture; repeat: 2 2" static-body></a-box>
-          <a-box  depth="3" width="3" height="0.3" position="-7 0 -12" opacity="1" color="#676e6b" material="src: #floorTexture; repeat: 2 2" static-body></a-box>
-          <a-box  depth="3" width="3" height="0.5" position="-4 0 -8" opacity="1" color="#676e6b" material="src: #floorTexture; repeat: 2 2" static-body></a-box>
-          <a-box  depth="3" width="3" height="0.3" position="18 0 -6" opacity="1" color="#676e6b" material="src: #floorTexture; repeat: 2 2" static-body></a-box>
-        </a-entity>
-
-        <a-entity id="hall">
-          <a-box id="wall" depth="30" width="1" height="8" position="5 0 -35" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-          <a-box id="wall" depth="30" width="1" height="8" position="-5 0 -35" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-        </a-entity>
-
-        <a-entity id="room1">
-          <a-box id="wall" scale="20 8 1" position="-15 0 -50" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-          <a-box id="wall" scale="20 8 1" position="15 0 -50" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-
-          <a-box id="wall" scale="1 8 40" position="25 0 -60" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-          <a-box id="wall" scale="1 8 40" position="-25 0 -60" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-
-          <a-box id="wall" scale="20 8 1" position="-15 0 -80" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-          <a-box id="wall" scale="20 8 1" position="15 0 -80" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-        </a-entity>
-
-        <a-entity id="hall">
-          <a-box id="wall" depth="30" width="1" height="8" position="5 0 -95" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-          <a-box id="wall" depth="30" width="1" height="8" position="-5 0 -95" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-        </a-entity>
-
-        <a-entity id="room2">
-          <a-box id="wall" scale="20 8 1" position="-15 0 -110" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-          <a-box id="wall" scale="20 8 1" position="15 0 -110" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-
-          <a-box id="wall" scale="1 8 40" position="25 0 -120" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-          <a-box id="wall" scale="1 8 40" position="-25 0 -120" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-
-          <a-box id="wall" scale="20 8 1" position="-15 0 -140" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-          <a-box id="wall" scale="20 8 1" position="15 0 -140" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-        </a-entity>
-
-        <a-entity id="hall">
-          <a-box id="wall" depth="30" width="1" height="8" position="5 0 -155" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-          <a-box id="wall" depth="30" width="1" height="8" position="-5 0 -155" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-        </a-entity>
-
-        <a-entity id="room3">
-          <a-box id="wall" scale="20 8 1" position="-15 0 -170" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-          <a-box id="wall" scale="20 8 1" position="15 0 -170" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-
-          <a-box id="wall" scale="1 8 40" position="25 0 -180" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-          <a-box id="wall" scale="1 8 40" position="-25 0 -180" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-
-          <a-box id="wall" scale="20 8 1" position="-15 0 -200" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-          <a-box id="wall" scale="20 8 1" position="15 0 -200" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
-        </a-entity>
-
-
-
-
-
-        <a-gltf-model id="startscreen" visible="false" src="#sky" position="-15 -1400 0" scale="1000 1000 1000"></a-gltf-model>
-        <a-sky id ="blacksky"scale ="10 10 10" color="black" visible="false"></a-sky>
-      
-        <a-plane id="plane" position="0 0 -75" rotation="-90 0 0" width="300" height="300" color="#676e6b" material="src: #floorTexture; repeat: 100 100" static-body></a-plane>
-      <!-- MainCamera -->
-        <a-camera wasd-controls="acceleration:100" active id="mainCamera" position="0 2 0" kinema-body="radius: 0.8">
-          <a-image id="Slain" scale="0.04 0.02 0.01" src="images/enemy_slain.png" opacity="0" position="0 0 -0.01"></a-image>
-          <a-image id="Died" scale="0.04 0.02 0.01" src="images/died.png" opacity="0" position="0 0 -0.01"></a-image>
-
-          
-          <a-cursor id="mainCursor" raycaster="objects: [interact]">
-            
-          </a-cursor>
-        </a-camera>
-
-     <!-- Enemy Camera -->
-        <a-camera active="false" rotation="0 0 0"  look-controls="enabled: false" id="cylinderCamera" position="145 1 0" wasd-controls-enabled="false">
-          <a-image id="Miss" scale="0.02 0.01 0.005" src="images/Miss.png" opacity="0" position="0 0 -0.01"></a-image>
-          <a-cursor raycaster="objects: [interact]" id="cylinderCursor">
-<a-circle id="c1" opacity="0" radius="0.12" position="-0.45 -0.5 0" material="color: white"></a-circle>
-<a-circle id="c2" opacity="0" radius="0.12" position="-0.15 -0.5 0" material="color: white"></a-circle>
-<a-circle id="c3" opacity="0" radius="0.12" position="0.15 -0.5 0" material="color: white"></a-circle>
-<a-circle id="c4" opacity="0" radius="0.12" position="0.45 -0.5 0" material="color: white"></a-circle>
-
-            <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt"id="output"  value="score" scale="0.4 0.4 0.4" position="-1.53 0.7 0"></a-text>
-            <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt"id="output" value="combo" scale="0.4 0.4 0.4" position="-1.5 -0.6 0"></a-text>
-            <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt"id="output" color="red" scale="0.19 0.19 0.19" position="-0.12 0.60 0"></a-text>
-            <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt"value="HP:" color="red" scale="0.3 0.3 0.3" position="0.95 0.78 0"></a-text>
-            <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt"id="minotaurtext" opacity="0" color="#4a2b10"value="Minotaur" scale="0.3 0.3 0.3" position="-0.15 0.7 0"></a-text>
-            <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt"id="runnertext" opacity="0" color="#4a2b10"value="Runner" scale="0.3 0.3 0.3" position="-0.15 0.7 0"></a-text>
-            <a-text font="https://cdn.aframe.io/fonts/KelsonSans.fnt"id="doctortext" opacity="0" color="#4a2b10"value="Doctor" scale="0.3 0.3 0.3" position="-0.15 0.7 0"></a-text>
-          
-  
-          </a-cursor>
-        </a-camera>
-
-      
-
-      </a-scene>
-
-    </body>
+  <body>
+    <div class="container" id="banner">
+      <h1> Rhythm Game</h1>
+    </div>       
+    <div class="container" id="body">
+      <div id="snapshot">
+        <img src="images/sample.png">
+      </div>
+      <div id="description">
+        <p>Tutorial
+        <ol>
+          <li>Kill the Monsters</li>
+          <li>Use the keys "S D J K" to attack the monster</li>
+          <li>The higher your combo, the higher your score multiplier, miss and you lose Health</li>
+        </ol>
+     
+      </p>
+        <a href="index.html" class="button">View</a>
+      </div>
+    </div>
+  </body>
 </html>
