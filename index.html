@@ -33,7 +33,7 @@
           <a-assets-item id="dragon" src="plague_doctor/scene.gltf"></a-assets-item> 
         </a-assets>
        
-<a-gltf-model src="#redtree" position="20 0 -130" scale="0.1 0.1 0.1"></a-gltf-model>
+<a-gltf-model src="#redtree" position="20 0 -190" scale="0.1 0.1 0.1"></a-gltf-model>
 
 
 <a-gltf-model src="#knight" rotation = "0 315 0" position="16 0 -16" scale="100 100 100"></a-gltf-model>
@@ -94,6 +94,21 @@
           <a-box id="wall" scale="20 8 1" position="15 0 -140" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
         </a-entity>
 
+        <a-entity id="hall">
+          <a-box id="wall" depth="30" width="1" height="8" position="5 0 -155" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
+          <a-box id="wall" depth="30" width="1" height="8" position="-5 0 -155" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
+        </a-entity>
+
+        <a-entity id="room3">
+          <a-box id="wall" scale="20 8 1" position="-15 0 -170" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
+          <a-box id="wall" scale="20 8 1" position="15 0 -170" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
+
+          <a-box id="wall" scale="1 8 40" position="25 0 -180" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
+          <a-box id="wall" scale="1 8 40" position="-25 0 -180" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
+
+          <a-box id="wall" scale="20 8 1" position="-15 0 -200" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
+          <a-box id="wall" scale="20 8 1" position="15 0 -200" opacity="1" color="#282b2a" material="src: #wall; repeat: 2 2" static-body></a-box>
+        </a-entity>
 
 
 
@@ -102,7 +117,7 @@
         <a-gltf-model id="startscreen" visible="false" src="#sky" position="-15 -1400 0" scale="1000 1000 1000"></a-gltf-model>
         <a-sky id ="blacksky"scale ="10 10 10" color="black" visible="false"></a-sky>
       
-        <a-plane id="plane" position="0 0 -75" rotation="-90 0 0" width="200" height="200" color="#676e6b" material="src: #floorTexture; repeat: 100 100" static-body></a-plane>
+        <a-plane id="plane" position="0 0 -75" rotation="-90 0 0" width="300" height="300" color="#676e6b" material="src: #floorTexture; repeat: 100 100" static-body></a-plane>
       <!-- MainCamera -->
         <a-camera wasd-controls="acceleration:100" active id="mainCamera" position="0 2 0" kinema-body="radius: 0.8">
           <a-image id="Slain" scale="0.04 0.02 0.01" src="images/enemy_slain.png" opacity="0" position="0 0 -0.01"></a-image>
