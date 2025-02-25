@@ -60,15 +60,15 @@ for (let sky of skys){
 
 }
 handleMonster(minotaurs, 2.1, 20000, 20, 2000, 2000, 1000, 'minotaurDead', 5, 
-  `#minotaurtext`,10,"src: url(sounds/ninelives.mp3);loop:false;volume:2;", "src: url(images/chop.png); transparent: false",30);
+  `#minotaurtext`,10,"src: url(sounds/ninelives.mp3);loop:true;volume:2;", "src: url(images/chop.png); transparent: false",30);
 if (gameState.minotaurDead) {
   handleMonster(monster2s, 2.1, 20000, 20, 2000, 2000, 1000, 'monster2Dead', 7, 
-    `#runnertext`,10, "src: url(sounds/ninelives.mp3);loop:false;volume:2;", "src: url(images/punch.png); transparent: false",55);
+    `#runnertext`,10, "src: url(sounds/audio25.mp3);loop:true;volume:2;", "src: url(images/punch.png); transparent: false",55);
 
 } 
 if (gameState.monster2Dead) {
    handleMonster(doctors, 2.1, 100000, 20, 2000, 2000, 1000, 'doctorDead', 10, 
-    `#doctortext`,10, "src: url(sounds/ninelives.mp3);loop:false;volume:2;", "src: url(images/shot.png); transparent: false",70);;
+    `#doctortext`,10, "src: url(sounds/audio27.mp3);loop:true;volume:2;", "src: url(images/shot.png); transparent: false",70);;
 } 
   window.requestAnimationFrame(loop);
 
