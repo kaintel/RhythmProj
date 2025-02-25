@@ -9,11 +9,12 @@ class Minotaur {
   }
 
   idle() {
-    this.obj.setAttribute("animation-mixer", { clip: "Idle", timeScale: 1 });
+    this.obj.setAttribute("animation-mixer", { timeScale: 1 });
+   
   }
 
   attack() {
-    this.obj.setAttribute("animation-mixer", { timeScale: 4 });
+    this.obj.setAttribute("animation-mixer", { timeScale: 2 });
   }
 
   dead() {
@@ -57,8 +58,8 @@ class Minotaur {
     this.obj.setAttribute("rotation", { x: 0, y: angle, z: 0 });
   }
 
-  redo(newz){
-    this.obj.setAttribute("position", { x: 0, y: 0, z: newz-11 });
+  redo(){
+    this.obj.setAttribute("position", { x: 0, y: 0, z: -60 });
   }
 }
 
@@ -75,6 +76,10 @@ class Monster2{
     }
     attack(){
         this.obj.setAttribute("animation-mixer",{timeScale: 2});
+          }
+
+          idle(){
+           
           }
           dead(){
             this.obj.setAttribute("visible","false");
@@ -117,8 +122,8 @@ class Monster2{
             let angle = Math.atan2(dx, dz) * (180 / Math.PI); 
             this.obj.setAttribute("rotation", { x: 0, y: angle, z: 0 });
           }
-          redo(newz){
-            this.obj.setAttribute("position", { x: 0, y: 0, z: newz-11 });
+          redo(){
+            this.obj.setAttribute("position", { x: 0, y: 0, z: -120 });
           }
 }
 
@@ -134,6 +139,9 @@ class Doctor{
   }
   attack(){
       this.obj.setAttribute("animation-mixer",{timeScale: 2});
+        }
+        idle(){
+          
         }
         dead(){
           this.obj.setAttribute("visible","false");
@@ -175,7 +183,7 @@ class Doctor{
           let angle = Math.atan2(dx, dz) * (180 / Math.PI); 
           this.obj.setAttribute("rotation", { x: 0, y: angle, z: 0 });
         }
-        redo(newz){
-          this.obj.setAttribute("position", { x: 0, y: 0, z: newz-11 });
+        redo(){
+          this.obj.setAttribute("position", { x: 0, y: 0, z: -185 });
         }
 }
