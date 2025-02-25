@@ -29,15 +29,17 @@ this.flag3=false;
 
 
 this.flagc1=false;
+
+this.flagt1=false;
 // monsters
 yourhealths.push(new yourhealth(1.3,0.7,0,"cylinderCursor", 20));
 enemyhealths.push(new enemyhealth(0, 0.6, 0,"cylinderCursor",t));
 
 hit();
 
-minotaurs.push(new Minotaur(0, 0, -20));
-monster2s.push(new Monster2(0, 0, -50));
-doctors.push(new Doctor(0, 0, -80));
+// minotaurs.push(new Minotaur(0, 0, -20));
+// monster2s.push(new Monster2(0, 0, -50));
+// doctors.push(new Doctor(0, 0, -80));
 
 isInitialized = true;
 
@@ -58,37 +60,39 @@ for (let sky of skys){
 
 }
 handleMonster(minotaurs, 2.1, 20000, 20, 2000, 2000, 1000, 'minotaurDead', 5, 
-  `#minotaurtext`,"src: url(sounds/ninelives.mp3);loop:false;volume:2;",-10, "src: url(images/chop.png); transparent: false");
+  `#minotaurtext`,10,"src: url(sounds/ninelives.mp3);loop:false;volume:2;", "src: url(images/chop.png); transparent: false",-9,30);
 if (gameState.minotaurDead) {
   handleMonster(monster2s, 2.1, 20000, 20, 2000, 2000, 1000, 'monster2Dead', 7, 
-    `#runnertext`,"src: url(sounds/ninelives.mp3);loop:false;volume:2;",-25, "src: url(images/punch.png); transparent: false");
-    
+    `#runnertext`,10, "src: url(sounds/ninelives.mp3);loop:false;volume:2;", "src: url(images/punch.png); transparent: false",-39,55);
+
 } 
 if (gameState.monster2Dead) {
-   handleMonster(doctors, 2.1, 20000, 20, 2000, 2000, 1000, 'doctorDead', 9, 
-    `#doctortext`,"src: url(sounds/ninelives.mp3);loop:false;volume:2;",-55, "src: url(images/shot.png); transparent: false");;
-
+   handleMonster(doctors, 2.1, 100000, 20, 2000, 2000, 1000, 'doctorDead', 10, 
+    `#doctortext`,10, "src: url(sounds/ninelives.mp3);loop:false;volume:2;", "src: url(images/shot.png); transparent: false",-69,70);;
 } 
   window.requestAnimationFrame(loop);
 
 }
-function checkZAxis(cross, monsters) {
-  let cameraZ = mainCamera.object3D.position.z;
+function checkZAxis( cross, monsters) {
+
   let playerPosition = mainCamera.object3D.position;
 
-  if (cameraZ < cross) {
 for (let monster of monsters) {
+  let d = distance(mainCamera, monster.obj);
+  if (cross >= d && !this.flagt1) {
+    console.log("chase");
+    console.log(d);
   monster.chase(playerPosition);
   monster.attack();
+
 }
-    
+}
   }
-}
 
 
 
 function handleMonster(monsters, distanceThreshold, scoreThreshold, missThreshold, 
-  delayBeforeBuild, delayAfterOutcome, delayBeforePlay, monsterDead, speed, monstertitle, song, cross, img) {
+  delayBeforeBuild, delayAfterOutcome, delayBeforePlay, monsterDead, speed, monstertitle, cross ,song, img, newz,max) {
 
   let enemySlain = document.querySelector('#slain');
   let die = document.querySelector('#Died');
@@ -103,10 +107,12 @@ checkZAxis(cross, monsters);
 
       if (d < distanceThreshold ) {
           // Trigger the monster encounter
+          monster.redo(newz);
+          this.flagt1 = true;
           opacityoff();
           display();
           cylinderCamera.setAttribute("sound", song);
-          mainCamera.setAttribute("position", { x: 0, y: 2, z: cross+10 });
+          mainCamera.setAttribute("position", { x: 0, y: 2, z: newz});
           mainCamera.setAttribute("active", "false");
           this.flagc1 = true;
          title.setAttribute("opacity", 1);
@@ -118,7 +124,7 @@ checkZAxis(cross, monsters);
           }
 
           setTimeout(() => {
-              new build(Note, Scorenote, "cylinderCursor", speed/1000, img);
+              new build(Note, Scorenote, "cylinderCursor", speed/1000, img, max);
               this.flag = true;
               this.flagc1 = false;
               blacksky.setAttribute("visible", "false");

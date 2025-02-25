@@ -1,0 +1,11 @@
+Model Information:
+* title:	Toon houses day version
+* source:	https://sketchfab.com/3d-models/toon-houses-day-version-3a33d33a6813410882f63d18c8189755
+* author:	luyssport (https://sketchfab.com/luyssport)
+
+Model License:
+* license type:	CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions must have the same license.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Toon houses day version" (https://sketchfab.com/3d-models/toon-houses-day-version-3a33d33a6813410882f63d18c8189755) by luyssport (https://sketchfab.com/luyssport) licensed under CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)

@@ -44,6 +44,7 @@ function display(){
           enemyhealth.returnhealth(); 
           }
           opacityon();  
+          this.flagt1=false;
     },2000);
 
 
@@ -137,23 +138,23 @@ missed();
 
 
   class build{
-    constructor(n,sn,c,dy,img){
-      for (let y = 2; y < 50; y += rnd(0.2, 2)) {
+    constructor(n,sn,c,dy,img, max){
+      for (let y = 2+rnd(0.2, 2); y < max; y += rnd(0.2, 2)) {
         let x = -0.45;
         note1s.push(new n(x, y, 0, c, dy, img));
       }
     
-      for (let y = 2; y < 50; y += rnd(0.2, 2)) {
+      for (let y = 2+rnd(0.2, 2); y < max; y += rnd(0.2, 2)) {
         let x = -0.15;
         note2s.push(new n(x, y, 0, c, dy, img));
       }
     
-      for (let y = 2; y < 50; y += rnd(0.2, 2)) {
+      for (let y = 2+rnd(0.2, 2); y < max; y += rnd(0.2, 2)) {
         let x = 0.15;
         note3s.push(new n(x, y, 0, c, dy, img));
       }
     
-      for (let y = 2; y < 50; y += rnd(0.2, 2)) {
+      for (let y = 2+rnd(0.2, 2); y < max; y += rnd(0.2, 2)) {
         let x = 0.45;
         note4s.push(new n(x, y, 0, c, dy, img));
       }
