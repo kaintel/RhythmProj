@@ -120,7 +120,7 @@
       
         <a-plane id="plane" position="0 0 -75" rotation="-90 0 0" width="300" height="300" color="#676e6b" material="src: #floorTexture; repeat: 100 100" static-body></a-plane>
       <!-- MainCamera -->
-        <a-camera wasd-controls="acceleration:100" active id="mainCamera" position="0 2 0" kinema-body="radius: 0.8">
+        <a-camera camera look-controls="pointerLockEnabled: true;" wasd-controls="acceleration:75" active id="mainCamera" position="0 2 0" kinema-body="radius: 0.8">
           <a-image id="Slain" scale="0.04 0.02 0.01" src="images/enemy_slain.png" opacity="0" position="0 0 -0.01"></a-image>
           <a-image id="Died" scale="0.04 0.02 0.01" src="images/died.png" opacity="0" position="0 0 -0.01"></a-image>
 
