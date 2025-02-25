@@ -1,0 +1,11 @@
+Model Information:
+* title:	Sandy Treasure Chest
+* source:	https://sketchfab.com/3d-models/sandy-treasure-chest-1cf15b0f7a2e414091c7cf0464071140
+* author:	FazFazz (https://sketchfab.com/FazFazz)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Sandy Treasure Chest" (https://sketchfab.com/3d-models/sandy-treasure-chest-1cf15b0f7a2e414091c7cf0464071140) by FazFazz (https://sketchfab.com/FazFazz) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
