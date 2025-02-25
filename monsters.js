@@ -56,6 +56,10 @@ class Minotaur {
     let angle = Math.atan2(dx, dz) * (180 / Math.PI); 
     this.obj.setAttribute("rotation", { x: 0, y: angle, z: 0 });
   }
+
+  redo(newz){
+    this.obj.setAttribute("position", { x: 0, y: 0, z: newz-11 });
+  }
 }
 
 
@@ -113,6 +117,9 @@ class Monster2{
             let angle = Math.atan2(dx, dz) * (180 / Math.PI); 
             this.obj.setAttribute("rotation", { x: 0, y: angle, z: 0 });
           }
+          redo(newz){
+            this.obj.setAttribute("position", { x: 0, y: 0, z: newz-11 });
+          }
 }
 
 class Doctor{
@@ -167,5 +174,8 @@ class Doctor{
           let dz = playerPosition.z - doctorPosition.z;
           let angle = Math.atan2(dx, dz) * (180 / Math.PI); 
           this.obj.setAttribute("rotation", { x: 0, y: angle, z: 0 });
+        }
+        redo(newz){
+          this.obj.setAttribute("position", { x: 0, y: 0, z: newz-11 });
         }
 }
